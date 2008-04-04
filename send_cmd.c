@@ -5,28 +5,36 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 12:42:00 2008 caner candan
-** Last update Thu Apr  3 18:38:17 2008 caner candan
+** Last update Fri Apr  4 16:38:22 2008 caner candan
 */
 
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <unistd.h>
-#include <string.h>
-#include <strings.h>
-#include <stdlib.h>
 #include <stdio.h>
 #include "my_ftp.h"
 
 int	send_cmd(char *str, int cs)
 {
-  char	*cmd;
-  char	*opt;
+  t_cmd	t;
+  int	rc;
 
-  if (!str)
+  if (!str || !str[0])
     return (-1);
-  send_cmd_param(str, &cmd, &opt);
-  printf(PROMPT_CMD, str);
-  send_cmd_client(cs, cmd, opt);
-  send_cmd_server(cmd, opt);
+  t.str = str;
+  rc = send_cmd_param(&t);
+  if (rc == CODE_QUIT)
+    return (CODE_QUIT);
+  if (rc == CODE_CD)
+    {
+      chdir(t.param);
+      return (CODE_CD);
+    }
+  if (rc)
+    {
+      printf(PROMPT_CMD, t.str);
+      send_cmd_client(cs, &t);
+      send_cmd_server(&t);
+    }
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Thu Apr  3 18:38:04 2008 caner candan
+** Last update Fri Apr  4 15:41:50 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
@@ -23,13 +23,17 @@
 # define CMD_PWD	"PWD"
 # define CMD_QUIT	"QUIT"
 # define CMD_BYE	"BYE"
+# define CMD_CD		"CD"
 
 # define CMD_LS_APP	"ls"
 # define CMD_LS_OPT	"-la"
 
 # define CMD_PWD_APP	"pwd"
 
-# define DELIMIT	"\n"
+# define DELIMIT	" "
+
+# define CODE_QUIT	0xF0
+# define CODE_CD	0xF1
 
 /*
 **
@@ -43,13 +47,28 @@
 **
 */
 
+typedef struct	s_cmd
+{
+  char		*str;
+  char		*cmd;
+  char		*opt;
+  char		*app;
+  char		*param;
+}		t_cmd;
+
+/*
+**
+*/
+
 char	*parse_arg(char *param, int pos, int ac, char **av);
 int	create_server(char *port);
 int	get_client(int cs);
 int	send_cmd(char *str, int cs);
-void	send_cmd_param(char *str, char **cmd, char **opt);
-void	send_cmd_client(int cs, char *cmd, char *opt);
-void	send_cmd_server(char *cmd, char *opt);
+int	send_cmd_param(t_cmd *t);
+void	send_cmd_client(int cs, t_cmd *t);
+void	send_cmd_server(t_cmd *t);
+char	*trim(char *s);
+
 int	xaccept(int s, struct sockaddr *addr, socklen_t *addrlen);
 int	xbind(int s, const struct sockaddr *addr, socklen_t addrlen);
 int	xconnect(int s, const struct sockaddr *name, socklen_t namelen);

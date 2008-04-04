@@ -5,24 +5,27 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 18:18:59 2008 caner candan
-** Last update Thu Apr  3 18:54:42 2008 caner candan
+** Last update Fri Apr  4 16:25:24 2008 caner candan
 */
 
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/wait.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include "my_ftp.h"
 
-void	send_cmd_client(int cs, char *cmd, char *opt)
+void	send_cmd_client(int cs, t_cmd *t)
 {
   int	pid;
+  int	signal;
 
-  if (!(pid = fork()) && cmd)
+  if (!(pid = fork()) && t->cmd)
     {
       dup2(cs, STDOUT_FILENO);
       dup2(cs, STDERR_FILENO);
-      execlp(cmd, cmd, opt, (char *) 0);
+      execlp(t->cmd, t->cmd, t->opt, t->param, (char *) 0);
       exit(0);
     }
+  wait(&signal);
 }

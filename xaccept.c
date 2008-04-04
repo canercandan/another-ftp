@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 09:37:35 2008 caner candan
-** Last update Thu Apr  3 10:19:36 2008 caner candan
+** Last update Fri Apr  4 17:24:13 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -23,7 +23,7 @@ int	xaccept(int s, struct sockaddr * addr, socklen_t * addrlen)
     {
       fprintf(stderr, "Error with accept\n");
       close(s);
-      exit(-1);
+      exit(FAILED);
     }
   return (sd);
 }

@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Fri Apr  4 15:41:50 2008 caner candan
+** Last update Fri Apr  4 17:11:38 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
@@ -24,6 +24,8 @@
 # define CMD_QUIT	"QUIT"
 # define CMD_BYE	"BYE"
 # define CMD_CD		"CD"
+# define CMD_GET	"GET"
+# define CMD_PUT	"PUT"
 
 # define CMD_LS_APP	"ls"
 # define CMD_LS_OPT	"-la"
@@ -32,8 +34,13 @@
 
 # define DELIMIT	" "
 
-# define CODE_QUIT	0xF0
-# define CODE_CD	0xF1
+# define FAILED		-1
+# define SUCCESS	0
+# define OK		1
+# define QUIT		2
+# define CD		3
+# define GET		4
+# define PUT		5
 
 /*
 **

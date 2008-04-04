@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 11:34:19 2008 caner candan
-** Last update Thu Apr  3 11:44:28 2008 caner candan
+** Last update Fri Apr  4 17:23:40 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -24,5 +24,5 @@ char	*parse_arg(char *param, int pos, int ac, char **av)
       if (i + pos < ac)
 	return (av[i + pos]);
     }
-  return (0);
+  return (SUCCESS);
 }

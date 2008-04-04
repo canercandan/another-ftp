@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 18:36:01 2008 caner candan
-** Last update Fri Apr  4 15:37:16 2008 caner candan
+** Last update Fri Apr  4 17:11:54 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -27,16 +27,16 @@ int	send_cmd_param(t_cmd *t)
     {
       t->cmd = CMD_LS_APP;
       t->opt = CMD_LS_OPT;
-      return (1);
+      return (OK);
     }
   if (!strcasecmp(t->app, CMD_PWD))
     {
       t->cmd = CMD_PWD_APP;
-      return (1);
+      return (OK);
     }
   if (!strcasecmp(t->app, CMD_QUIT) || !strcasecmp(t->app, CMD_BYE))
-    return (CODE_QUIT);
+    return (QUIT);
   if (!strcasecmp(t->app, CMD_CD))
-    return (CODE_CD);
-  return (0);
+    return (CD);
+  return (SUCCESS);
 }

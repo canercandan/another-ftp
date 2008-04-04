@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 12:42:00 2008 caner candan
-** Last update Fri Apr  4 16:38:22 2008 caner candan
+** Last update Fri Apr  4 17:17:07 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -20,21 +20,21 @@ int	send_cmd(char *str, int cs)
   int	rc;
 
   if (!str || !str[0])
-    return (-1);
+    return (FAILED);
   t.str = str;
   rc = send_cmd_param(&t);
-  if (rc == CODE_QUIT)
-    return (CODE_QUIT);
-  if (rc == CODE_CD)
+  if (rc == QUIT)
+    return (QUIT);
+  if (rc == CD)
     {
       chdir(t.param);
-      return (CODE_CD);
+      return (CD);
     }
-  if (rc)
+  if (rc > 0)
     {
-      printf(PROMPT_CMD, t.str);
+      printf(PROMPT_CMD, t.app);
       send_cmd_client(cs, &t);
       send_cmd_server(&t);
     }
-  return (0);
+  return (SUCCESS);
 }

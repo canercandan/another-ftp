@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 09:48:28 2008 caner candan
-** Last update Thu Apr  3 10:22:35 2008 caner candan
+** Last update Fri Apr  4 17:24:42 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -23,7 +23,7 @@ ssize_t	xrecv(int s, void *buf, size_t len, int flags)
     {
       fprintf(stderr, "Error with recv()\n");
       close(s);
-      exit(-1);
+      exit(FAILED);
     }
   return (rc);
 }

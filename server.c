@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 09:23:57 2008 caner candan
-** Last update Thu Apr  3 17:42:18 2008 caner candan
+** Last update Fri Apr  4 17:23:59 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -22,5 +22,5 @@ int	main(int ac, char **av)
   while ((cs = xaccept(s, NULL, NULL)) > 0)
     get_client(cs);
   close(s);
-  return (0);
+  return (SUCCESS);
 }

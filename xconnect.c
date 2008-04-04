@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 09:53:56 2008 caner candan
-** Last update Thu Apr  3 10:19:58 2008 caner candan
+** Last update Fri Apr  4 17:24:29 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -23,7 +23,7 @@ int	xconnect(int s, const struct sockaddr *name, socklen_t namelen)
     {
       fprintf(stderr, "Error with connect()\n");
       close(s);
-      exit(-1);
+      exit(FAILED);
     }
   return (s);
 }

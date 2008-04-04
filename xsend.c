@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 09:51:31 2008 caner candan
-** Last update Thu Apr  3 10:20:23 2008 caner candan
+** Last update Fri Apr  4 17:24:50 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -23,7 +23,7 @@ ssize_t	xsend(int s, const void *msg, size_t len, int flags)
     {
       fprintf(stderr, "Error with send()\n");
       close(s);
-      exit(-1);
+      exit(FAILED);
     }
   return (rc);
 }

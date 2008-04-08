@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 17:36:14 2008 caner candan
-** Last update Fri Apr  4 17:15:04 2008 caner candan
+** Last update Tue Apr  8 08:17:34 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -26,13 +26,14 @@ int	get_client(int cs)
   if (!(pid = fork()))
     {
       bzero(buf, sizeof(buf));
-      xsend(cs, "ftp>", 4, 0);
+      xsend(cs, "ftp> ", 5, 0);
       while ((nbr = xrecv(cs, buf, sizeof(buf), 0)) > 0)
 	{
+	  write(1, buf, nbr);
 	  rc = send_cmd(trim(buf), cs);
-	  if (rc == QUIT)
+	  if (rc == RET_QUIT)
 	    break;
-	  xsend(cs, "ftp>", 4, 0);
+	  xsend(cs, "ftp> ", 5, 0);
 	  bzero(buf, sizeof(buf));
 	}
       close(cs);

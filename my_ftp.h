@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Fri Apr  4 17:11:38 2008 caner candan
+** Last update Tue Apr  8 14:58:15 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
@@ -17,30 +17,23 @@
 # define PROMPT_CMD	"<-- %s\n"
 # define PROMPT_RES	"--> "
 
-# define CMD_RETR	"RETR"
-# define CMD_DIR	"DIR"
-# define CMD_LS		"LS"
-# define CMD_PWD	"PWD"
-# define CMD_QUIT	"QUIT"
-# define CMD_BYE	"BYE"
-# define CMD_CD		"CD"
-# define CMD_GET	"GET"
-# define CMD_PUT	"PUT"
+# define LIST_APP	"ls"
+# define LIST_OPT	"-la"
 
-# define CMD_LS_APP	"ls"
-# define CMD_LS_OPT	"-la"
-
-# define CMD_PWD_APP	"pwd"
+# define PWD_APP	"pwd"
 
 # define DELIMIT	" "
 
 # define FAILED		-1
 # define SUCCESS	0
-# define OK		1
-# define QUIT		2
-# define CD		3
-# define GET		4
-# define PUT		5
+# define RET_OK		1
+# define RET_QUIT	2
+# define RET_CD		3
+# define RET_GET	4
+# define RET_PUT	5
+
+//# define EOR		1 /* determine end of transfert */
+//# define EOF		2 /* determine end of file transfered */
 
 /*
 **
@@ -63,6 +56,18 @@ typedef struct	s_cmd
   char		*param;
 }		t_cmd;
 
+typedef struct	s_req
+{
+  int		req;
+  int		(*f)(t_cmd *cmd);
+}		t_req;
+
+/*
+**
+*/
+
+extern	t_req	gl_req[];
+
 /*
 **
 */
@@ -75,6 +80,10 @@ int	send_cmd_param(t_cmd *t);
 void	send_cmd_client(int cs, t_cmd *t);
 void	send_cmd_server(t_cmd *t);
 char	*trim(char *s);
+
+int	req_init(t_cmd *cmd);
+int	req_list(t_cmd *cmd);
+int	req_pwd(t_cmd *cmd);
 
 int	xaccept(int s, struct sockaddr *addr, socklen_t *addrlen);
 int	xbind(int s, const struct sockaddr *addr, socklen_t addrlen);

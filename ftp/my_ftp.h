@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Tue Apr  8 15:55:57 2008 caner candan
+** Last update Tue Apr  8 17:13:24 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__

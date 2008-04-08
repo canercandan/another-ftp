@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 18:36:01 2008 caner candan
-** Last update Tue Apr  8 17:54:31 2008 caner candan
+** Last update Tue Apr  8 20:26:02 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -15,16 +15,14 @@
 #include <stdlib.h>
 #include "my_ftp.h"
 
-t_cmd	*cmd_init(char *s)
+int	cmd_init(t_cmd *t, int cs, char *s)
 {
-  t_cmd	*t;
-
-  t = malloc(sizeof(*t));
+  t->cs = cs;
   t->app = strtok(s, DELIMIT);
   s = NULL;
   t->param = strtok(s, DELIMIT);
   if (!t->app)
     return (0);
   printf("app: %s, param: %s\n", t->app, t->param);
-  return (t);
+  return (1);
 }

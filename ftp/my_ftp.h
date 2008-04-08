@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Tue Apr  8 17:50:06 2008 caner candan
+** Last update Tue Apr  8 20:35:08 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
@@ -51,6 +51,7 @@
 
 typedef struct	s_cmd
 {
+  int		cs;
   char		*app;
   char		*param;
 }		t_cmd;
@@ -59,6 +60,8 @@ typedef struct	s_req
 {
   char		*req;
   int		(*f)();
+  char		*cmd;
+  char		*opt;
 }		t_req;
 
 /*
@@ -76,14 +79,19 @@ int	create_server(char *port);
 int	get_client(int cs);
 char	*trim(char *s);
 
-t_cmd	*cmd_init(char *s);
+int	cmd_init(t_cmd *cmd, int cs, char *s);
+void	cmd_server(t_cmd *cmd, t_req *req);
+void	cmd_client(t_cmd *cmd, t_req *req);
+void	cmd_exec(t_cmd *cmd,t_req *req);
 
 int	req_init(t_cmd *cmd);
-int	req_list(t_cmd *cmd);
-int	req_get(t_cmd *cmd);
-int	req_put(t_cmd *cmd);
-int	req_pwd(void);
-int	req_quit(void);
+int	req_list(t_cmd *cmd, t_req *req);
+int	req_get(t_cmd *cmd, t_req *req);
+int	req_put(t_cmd *cmd, t_req *req);
+int	req_user(t_cmd *cmd, t_req *req);
+int	req_pass(t_cmd *cmd, t_req *req);
+int	req_pwd(t_cmd *cmd, t_req *req);
+int	req_quit(t_cmd *cmd, t_req *req);
 
 int	xaccept(int s, struct sockaddr *addr, socklen_t *addrlen);
 int	xbind(int s, const struct sockaddr *addr, socklen_t addrlen);

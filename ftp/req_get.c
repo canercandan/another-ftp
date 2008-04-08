@@ -5,16 +5,26 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 15:17:32 2008 caner candan
-** Last update Tue Apr  8 15:38:16 2008 caner candan
+** Last update Tue Apr  8 18:41:42 2008 caner candan
 */
 
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include "my_ftp.h"
 
-int	req_get(t_cmd *cmd)
+int	req_get(t_cmd *cmd, t_req *req)
 {
+  char	buf[4096];
+  int	fd;
+  int	nbr;
+
   printf("req_get()\n");
+  fd = open(cmd->param, O_RDONLY);
+  while ((nbr = read(fd, buf, sizeof(buf))) > 0)
+    write(cmd->cs, buf, nbr);
+  close(fd);
   return (0);
 }

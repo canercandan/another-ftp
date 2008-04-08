@@ -5,17 +5,17 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 15:58:08 2008 caner candan
-** Last update Tue Apr  8 16:02:55 2008 caner candan
+** Last update Tue Apr  8 20:45:24 2008 caner candan
 */
 
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <string.h>
 #include "my_ftp.h"
 
-void	cmd_server(t_cmd *cmd)
+void	cmd_server(t_cmd *cmd, t_req *req)
 {
   int	pid;
   int	signal;
@@ -23,7 +23,7 @@ void	cmd_server(t_cmd *cmd)
   if (!(pid = fork()))
     {
       write(1, PROMPT_RES, strlen(PROMPT_RES));
-      execlp(cmd->app, cmd->app, cmd->param, (char *) 0);
+      cmd_exec(cmd, req);
       exit(0);
     }
   wait(&signal);

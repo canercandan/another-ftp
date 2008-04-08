@@ -5,17 +5,17 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 20:31:59 2008 caner candan
-** Last update Tue Apr  8 20:45:03 2008 caner candan
+** Last update Tue Apr  8 20:58:33 2008 caner candan
 */
 
-#include <sys/socket.h>
 #include <sys/types.h>
+#include <sys/socket.h>
 #include <sys/wait.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include "my_ftp.h"
 
-int	cmd_client(t_cmd *cmd, t_req *req)
+void	cmd_client(t_cmd *cmd, t_req *req)
 {
   int	pid;
   int	signal;

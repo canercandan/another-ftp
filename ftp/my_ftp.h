@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Tue Apr  8 20:35:08 2008 caner candan
+** Last update Tue Apr  8 21:06:47 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
@@ -91,6 +91,9 @@ int	req_put(t_cmd *cmd, t_req *req);
 int	req_user(t_cmd *cmd, t_req *req);
 int	req_pass(t_cmd *cmd, t_req *req);
 int	req_pwd(t_cmd *cmd, t_req *req);
+int	req_cwd(t_cmd *cmd, t_req *req);
+int	req_mkd(t_cmd *cmd, t_req *req);
+int	req_dele(t_cmd *cmd, t_req *req);
 int	req_quit(t_cmd *cmd, t_req *req);
 
 int	xaccept(int s, struct sockaddr *addr, socklen_t *addrlen);

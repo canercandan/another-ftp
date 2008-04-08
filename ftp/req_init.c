@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 14:46:58 2008 caner candan
-** Last update Tue Apr  8 18:27:52 2008 caner candan
+** Last update Tue Apr  8 21:02:28 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -20,6 +20,9 @@ t_req	gl_req[] = {
   {"USER", req_user, 0, 0},
   {"PASS", req_pass, 0, 0},
   {"PWD", req_pwd, "pwd", 0},
+  {"CWD", req_cwd, 0, 0},
+  {"MKD", req_mkd, "mkdir", 0},
+  {"DELE", req_dele, "rm", "-rf"},
   {"QUIT", req_quit, 0, 0},
   {0, 0, 0, 0}
 };

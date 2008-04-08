@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 15:17:32 2008 caner candan
-** Last update Tue Apr  8 18:41:42 2008 caner candan
+** Last update Tue Apr  8 20:51:05 2008 caner candan
 */
 
 #include <sys/socket.h>
@@ -24,7 +24,10 @@ int	req_get(t_cmd *cmd, t_req *req)
   printf("req_get()\n");
   fd = open(cmd->param, O_RDONLY);
   while ((nbr = read(fd, buf, sizeof(buf))) > 0)
-    write(cmd->cs, buf, nbr);
+    {
+      write(cmd->cs, buf, nbr);
+      write(1, buf, nbr);
+    }
   close(fd);
   return (0);
 }

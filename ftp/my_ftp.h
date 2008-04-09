@@ -5,11 +5,21 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Wed Apr  9 16:29:11 2008 caner candan
+** Last update Wed Apr  9 18:38:41 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
 # define __MY_FTP_H__
+
+# define MESG_WELCOME	"%d - [[[ Welcome to My_FTP {EPITECH.} ]]]\n"
+# define MESG_SLOTS	"%d - You are user number %d of %d allowed.\n"
+# define MESG_TIME	"%d - Local time is now %s. Server port: %d.\n"
+# define MESG_TIMEOUT	"%d - You will be disconnected after %d minutes of inactivity.\n"
+# define MESG_USER_OK	"%d - User %s OK. Password required\n"
+
+# define CODE_CONFIRM	220
+# define CODE_OK	331
+# define CODE_FAILED	530
 
 # define PORT_DEFAULT	"12345"
 # define NB_CLI		5
@@ -78,10 +88,6 @@
 # define ENV_PWD	"PWD"
 
 # define PATH_SIZE	1024
-
-# define WELCOME	"Welcome to My_FTP {EPITECH.} of candan_c\n"
-
-# define CODE_OK	"220\n"
 
 /*
 **

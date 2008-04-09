@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Tue Apr  8 21:06:47 2008 caner candan
+** Last update Wed Apr  9 09:46:15 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
@@ -36,6 +36,39 @@
 
 //# define EOR		1 /* determine end of transfert */
 //# define EOF		2 /* determine end of file transfered */
+
+# define RQ_LIST	"LIST"
+# define RQ_GET		"GET"
+# define RQ_PUT		"PUT"
+# define RQ_USER	"USER"
+# define RQ_PASS	"PASS"
+# define RQ_PWD		"PWD"
+# define RQ_CWD		"CWD"
+# define RQ_MKD		"MKD"
+# define RQ_DELE	"DELE"
+# define RQ_RMD		"RMD"
+# define RQ_PORT	"PORT"
+# define RQ_MODE	"MODE"
+# define RQ_SIZE	"SIZE"
+# define RQ_STAT	"STAT"
+# define RQ_QUIT	"QUIT"
+
+# define CMD_LIST	"ls"
+# define CMD_DIR	"dir"
+# define CMD_CWD	"cd"
+# define CMD_MKD	"mkdir"
+# define CMD_DELE	"delete"
+# define CMD_RMD	"rmdir"
+# define CMD_FTP	"ftp"
+# define CMD_OPEN	"open"
+# define CMD_HELP	"help"
+# define CMD_ASCII	"ascii"
+# define CMD_BINARY	"binary"
+# define CMD_QUIT	"quit"
+# define CMD_BYE	"bye"
+# define CMD_DISC	"disconnect"
+# define CMD_GET	"get"
+# define CMD_PUT	"put"
 
 /*
 **
@@ -79,22 +112,27 @@ int	create_server(char *port);
 int	get_client(int cs);
 char	*trim(char *s);
 
-int	cmd_init(t_cmd *cmd, int cs, char *s);
-void	cmd_server(t_cmd *cmd, t_req *req);
-void	cmd_client(t_cmd *cmd, t_req *req);
-void	cmd_exec(t_cmd *cmd,t_req *req);
+int	cmd_init(t_cmd *c, int cs, char *s);
+void	cmd_server(t_cmd *c, t_req *r);
+void	cmd_client(t_cmd *c, t_req *r);
+void	cmd_exec(t_cmd *c,t_req *r);
 
-int	req_init(t_cmd *cmd);
-int	req_list(t_cmd *cmd, t_req *req);
-int	req_get(t_cmd *cmd, t_req *req);
-int	req_put(t_cmd *cmd, t_req *req);
-int	req_user(t_cmd *cmd, t_req *req);
-int	req_pass(t_cmd *cmd, t_req *req);
-int	req_pwd(t_cmd *cmd, t_req *req);
-int	req_cwd(t_cmd *cmd, t_req *req);
-int	req_mkd(t_cmd *cmd, t_req *req);
-int	req_dele(t_cmd *cmd, t_req *req);
-int	req_quit(t_cmd *cmd, t_req *req);
+int	req_init(t_cmd *c);
+int	req_list(t_cmd *c, t_req *r);
+int	req_get(t_cmd *c, t_req *r);
+int	req_put(t_cmd *c, t_req *r);
+int	req_user(t_cmd *c, t_req *r);
+int	req_pass(t_cmd *c, t_req *r);
+int	req_pwd(t_cmd *c, t_req *r);
+int	req_cwd(t_cmd *c, t_req *r);
+int	req_mkd(t_cmd *c, t_req *r);
+int	req_dele(t_cmd *c, t_req *r);
+int	req_rmd(t_cmd *c, t_req *r);
+int	req_port(t_cmd *c, t_req *r);
+int	req_mode(t_cmd *c, t_req *r);
+int	req_size(t_cmd *c, t_req *r);
+int	req_stat(t_cmd *c, t_req *r);
+int	req_quit(t_cmd *c, t_req *r);
 
 int	xaccept(int s, struct sockaddr *addr, socklen_t *addrlen);
 int	xbind(int s, const struct sockaddr *addr, socklen_t addrlen);

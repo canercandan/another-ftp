@@ -5,21 +5,25 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Wed Apr  9 18:38:41 2008 caner candan
+** Last update Wed Apr  9 20:12:06 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
 # define __MY_FTP_H__
 
-# define MESG_WELCOME	"%d - [[[ Welcome to My_FTP {EPITECH.} ]]]\n"
-# define MESG_SLOTS	"%d - You are user number %d of %d allowed.\n"
-# define MESG_TIME	"%d - Local time is now %s. Server port: %d.\n"
-# define MESG_TIMEOUT	"%d - You will be disconnected after %d minutes of inactivity.\n"
-# define MESG_USER_OK	"%d - User %s OK. Password required\n"
+# define MESG_WELCOME	"220-[[[ Welcome to My_FTP {EPITECH.} ]]]\n"
+# define MESG_SLOTS	"220-You are user number %d of %d allowed.\n"
+# define MESG_TIME	"220-Local time is now %s. Server port: %s.\n"
+# define MESG_TIMEOUT	"220 You will be disconnected after %d minutes of inactivity.\n"
+# define MESG_USER_OK	"User %s OK. Password required\n"
+# define MESG_USER_GRP	"230-User %s has group access to:  %s	%s\n"
+# define MESG_USER_DIR	"OK. Current restricted directory is /\n"
+# define MESG_SYS_TYPE	"Remote system type is %s\n"
+# define MESG_MODE	"Using %s mode to transfer files.\n"
 
-# define CODE_CONFIRM	220
-# define CODE_OK	331
-# define CODE_FAILED	530
+# define MESG_CODE	"%c%c%c %s\n"
+
+# define TYPE_UNIX	"UNIX"
 
 # define PORT_DEFAULT	"12345"
 # define NB_CLI		5
@@ -53,6 +57,7 @@
 # define RQ_PUT		"PUT"
 # define RQ_USER	"USER"
 # define RQ_PASS	"PASS"
+# define RQ_ACCT	"ACCT"
 # define RQ_PWD		"PWD"
 # define RQ_CWD		"CWD"
 # define RQ_MKD		"MKD"
@@ -107,11 +112,19 @@
 **
 */
 
+typedef struct	s_msg
+{
+  char		cde_x;
+  char		cde_y;
+  char		cde_z;
+  char		mesg[200];
+}		t_msg;
+
 typedef struct	s_ftp
 {
   char		*host;
   char		*port;
-  char		root[1024];
+  char		root[PATH_SIZE];
   int		s;
   int		cs;
 }		t_ftp;
@@ -121,6 +134,7 @@ typedef struct	s_cmd
   char		*app;
   char		*param;
   t_ftp		*f;
+  t_msg		*m;
 }		t_cmd;
 
 typedef struct	s_req
@@ -146,7 +160,7 @@ int	create_server(char *port);
 void	get_client(t_ftp *f);
 char	*trim(char *s);
 
-int	cmd_init(t_cmd *c, t_ftp *f, char *s);
+int	cmd_init(t_cmd *c, char *s);
 void	cmd_server(t_cmd *c, t_req *r);
 void	cmd_client(t_cmd *c, t_req *r);
 void	cmd_exec(t_cmd *c,t_req *r);
@@ -157,6 +171,7 @@ int	req_get(t_cmd *c, t_req *r);
 int	req_put(t_cmd *c, t_req *r);
 int	req_user(t_cmd *c, t_req *r);
 int	req_pass(t_cmd *c, t_req *r);
+int	req_acct(t_cmd *c, t_req *r);
 int	req_pwd(t_cmd *c, t_req *r);
 int	req_cwd(t_cmd *c, t_req *r);
 int	req_mkd(t_cmd *c, t_req *r);
@@ -179,5 +194,8 @@ ssize_t	xsend(int s, const void *msg, size_t len, int flags);
 int	xsocket(int domain, int type, int protocol);
 
 int	control_path(t_ftp *f, char *path);
+
+void	mesg_start(t_ftp *f);
+void	mesg_dump(t_cmd *c);
 
 #endif /* !__MY_FTP_H__ */

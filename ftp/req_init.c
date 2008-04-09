@@ -5,12 +5,13 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 14:46:58 2008 caner candan
-** Last update Wed Apr  9 17:23:44 2008 caner candan
+** Last update Wed Apr  9 19:56:55 2008 caner candan
 */
 
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <string.h>
+#include <stdio.h>
 #include "my_ftp.h"
 
 t_req	gl_req[] = {
@@ -19,6 +20,7 @@ t_req	gl_req[] = {
   {RQ_PUT, req_put, 0, 0},
   {RQ_USER, req_user, 0, 0},
   {RQ_PASS, req_pass, 0, 0},
+  {RQ_ACCT, req_acct, 0, 0},
   {RQ_PWD, req_pwd, "pwd", 0},
   {RQ_CWD, req_cwd, 0, 0},
   {RQ_MKD, req_mkd, 0, 0},
@@ -39,6 +41,7 @@ int	req_init(t_cmd *c)
 {
   int	i;
 
+  printf("req_init()\n");
   if (!c)
     return (FALSE);
   for (i = 0; gl_req[i].req; i++)

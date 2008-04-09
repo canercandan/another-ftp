@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 11:18:05 2008 caner candan
-** Last update Wed Apr  9 11:20:19 2008 caner candan
+** Last update Wed Apr  9 21:32:30 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -15,8 +15,15 @@
 
 int	req_syst(t_cmd *c, t_req *r)
 {
-  c = 0;
-  r = 0;
+  t_msg	m;
+
+  r = NULL;
   printf("req_syst()\n");
+  m.cde_x = '2';
+  m.cde_y = '2';
+  m.cde_z = '0';
+  m.is_send = MESG_SEND;
+  sprintf(m.mesg, "syst");
+  mesg_dump(c->f->cs, &m);
   return (0);
 }

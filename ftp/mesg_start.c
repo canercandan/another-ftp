@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 18:39:47 2008 caner candan
-** Last update Wed Apr  9 20:12:28 2008 caner candan
+** Last update Wed Apr  9 21:28:06 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -16,15 +16,20 @@
 
 void	mesg_start(t_ftp *f)
 {
-  char	buf[200];
+  t_msg	m;
 
   printf("mesg_start()\n");
-  sprintf(buf, MESG_WELCOME);
-  send(f->cs, buf, strlen(buf), 0);
-  sprintf(buf, MESG_SLOTS, 0, 0);
-  send(f->cs, buf, strlen(buf), 0);
-  sprintf(buf, MESG_TIME, "00h00", f->port);
-  send(f->cs, buf, strlen(buf), 0);
-  sprintf(buf, MESG_TIMEOUT, 0);
-  send(f->cs, buf, strlen(buf), 0);
+  m.cde_x = '2';
+  m.cde_y = '2';
+  m.cde_z = '0';
+  m.is_send = MESG_NOTSEND;
+  sprintf(m.mesg, MESG_WELCOME);
+  mesg_dump(f->cs, &m);
+  sprintf(m.mesg, MESG_SLOTS, 0, 0);
+  mesg_dump(f->cs, &m);
+  sprintf(m.mesg, MESG_TIME, "00h00", f->port);
+  mesg_dump(f->cs, &m);
+  sprintf(m.mesg, MESG_TIMEOUT, 0);
+  m.is_send = MESG_SEND;
+  mesg_dump(f->cs, &m);
 }

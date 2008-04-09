@@ -5,23 +5,26 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Wed Apr  9 20:12:06 2008 caner candan
+** Last update Wed Apr  9 21:44:52 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
 # define __MY_FTP_H__
 
-# define MESG_WELCOME	"220-[[[ Welcome to My_FTP {EPITECH.} ]]]\n"
-# define MESG_SLOTS	"220-You are user number %d of %d allowed.\n"
-# define MESG_TIME	"220-Local time is now %s. Server port: %s.\n"
-# define MESG_TIMEOUT	"220 You will be disconnected after %d minutes of inactivity.\n"
-# define MESG_USER_OK	"User %s OK. Password required\n"
-# define MESG_USER_GRP	"230-User %s has group access to:  %s	%s\n"
-# define MESG_USER_DIR	"OK. Current restricted directory is /\n"
-# define MESG_SYS_TYPE	"Remote system type is %s\n"
-# define MESG_MODE	"Using %s mode to transfer files.\n"
+# define MESG_WELCOME	"[[[ Welcome to My_FTP {EPITECH.} ]]]"
+# define MESG_SLOTS	"You are user number %d of %d allowed."
+# define MESG_TIME	"Local time is now %s. Server port: %s."
+# define MESG_TIMEOUT	"You will be disconnected after %d minutes of inactivity."
+# define MESG_USER_OK	"User %s OK. Password required"
+# define MESG_USER_GRP	"User %s has group access to:  %s	%s"
+# define MESG_USER_DIR	"OK. Current restricted directory is /"
+# define MESG_SYS_TYPE	"Remote system type is %s"
+# define MESG_MODE	"Using %s mode to transfer files."
 
-# define MESG_CODE	"%c%c%c %s\n"
+# define MESG_CODE	"%c%c%c%c%s\n"
+
+# define MESG_SEND	' '
+# define MESG_NOTSEND	'-'
 
 # define TYPE_UNIX	"UNIX"
 
@@ -43,11 +46,7 @@
 # define FALSE		-1
 # define TRUE		0
 # define WAIT		1
-# define RET_OK		0
-# define RET_QUIT	1
-# define RET_CD		2
-# define RET_GET	3
-# define RET_PUT	4
+# define RET_QUIT	2
 
 //# define EOR		1 /* determine end of transfert */
 //# define EOF		2 /* determine end of file transfered */
@@ -71,6 +70,10 @@
 # define RQ_RNFR	"RNFR"
 # define RQ_RNTO	"RNTO"
 # define RQ_SYST	"SYST"
+# define RQ_FEAT	"FEAT"
+# define RQ_EPSV	"EPSV"
+# define RQ_PASV	"PASV"
+# define RQ_EPRT	"EPRT"
 
 # define CMD_LIST	"ls"
 # define CMD_DIR	"dir"
@@ -98,12 +101,6 @@
 **
 */
 
-# define CODE(buf, pos)	((buf)[pos])
-
-/*
-**
-*/
-
 # ifndef NULL
 #  define NULL	0
 # endif /* !NULL */
@@ -117,6 +114,7 @@ typedef struct	s_msg
   char		cde_x;
   char		cde_y;
   char		cde_z;
+  char		is_send;
   char		mesg[200];
 }		t_msg;
 
@@ -134,7 +132,6 @@ typedef struct	s_cmd
   char		*app;
   char		*param;
   t_ftp		*f;
-  t_msg		*m;
 }		t_cmd;
 
 typedef struct	s_req
@@ -160,7 +157,7 @@ int	create_server(char *port);
 void	get_client(t_ftp *f);
 char	*trim(char *s);
 
-int	cmd_init(t_cmd *c, char *s);
+int	cmd_init(t_cmd *c, t_ftp *f, char *s);
 void	cmd_server(t_cmd *c, t_req *r);
 void	cmd_client(t_cmd *c, t_req *r);
 void	cmd_exec(t_cmd *c,t_req *r);
@@ -184,6 +181,10 @@ int	req_stat(t_cmd *c, t_req *r);
 int	req_quit(t_cmd *c, t_req *r);
 int	req_rn(t_cmd *c, t_req *r);
 int	req_syst(t_cmd *c, t_req *r);
+int	req_feat(t_cmd *c, t_req *r);
+int	req_epsv(t_cmd *c, t_req *r);
+int	req_pasv(t_cmd *c, t_req *r);
+int	req_eprt(t_cmd *c, t_req *r);
 
 int	xaccept(int s, struct sockaddr *addr, socklen_t *addrlen);
 int	xbind(int s, const struct sockaddr *addr, socklen_t addrlen);
@@ -196,6 +197,6 @@ int	xsocket(int domain, int type, int protocol);
 int	control_path(t_ftp *f, char *path);
 
 void	mesg_start(t_ftp *f);
-void	mesg_dump(t_cmd *c);
+void	mesg_dump(int cs, t_msg *m);
 
 #endif /* !__MY_FTP_H__ */

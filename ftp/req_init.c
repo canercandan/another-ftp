@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 14:46:58 2008 caner candan
-** Last update Wed Apr  9 19:56:55 2008 caner candan
+** Last update Wed Apr  9 21:34:52 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -34,6 +34,8 @@ t_req	gl_req[] = {
   {RQ_RNFR, req_rn, 0, 0},
   {RQ_RNTO, req_rn, 0, 0},
   {RQ_SYST, req_syst, 0, 0},
+  {RQ_FEAT, req_feat, 0, 0},
+  {RQ_EPSV, req_epsv, 0, 0},
   {0, 0, 0, 0}
 };
 

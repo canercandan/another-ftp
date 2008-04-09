@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 09:23:57 2008 caner candan
-** Last update Tue Apr  8 15:26:22 2008 caner candan
+** Last update Wed Apr  9 11:54:31 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -15,12 +15,13 @@
 
 int	main(int ac, char **av)
 {
-  int	s;
-  int	cs;
+  t_ftp	f;
 
-  s = create_server(ac < 2 ? PORT_DEFAULT : av[1]);
-  while ((cs = xaccept(s, NULL, NULL)) > 0)
-    get_client(cs);
-  close(s);
+  f.port = (ac < 2 ? PORT_DEFAULT : av[1]);
+  f.s = create_server(f.port);
+  getcwd(f.root, sizeof(f.root));
+  while ((f.cs = xaccept(f.s, NULL, NULL)) > 0)
+    get_client(&f);
+  close(f.s);
   return (TRUE);
 }

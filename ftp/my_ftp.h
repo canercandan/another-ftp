@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Wed Apr  9 09:46:15 2008 caner candan
+** Last update Wed Apr  9 16:29:11 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
@@ -24,15 +24,16 @@
 
 # define PWD_APP	"pwd"
 
-# define DELIMIT	" \n^]"
+# define DELIMIT	" \n\t"
 
 # define FALSE		-1
 # define TRUE		0
-# define RET_OK		1
-# define RET_QUIT	2
-# define RET_CD		3
-# define RET_GET	4
-# define RET_PUT	5
+# define WAIT		1
+# define RET_OK		0
+# define RET_QUIT	1
+# define RET_CD		2
+# define RET_GET	3
+# define RET_PUT	4
 
 //# define EOR		1 /* determine end of transfert */
 //# define EOF		2 /* determine end of file transfered */
@@ -52,12 +53,16 @@
 # define RQ_SIZE	"SIZE"
 # define RQ_STAT	"STAT"
 # define RQ_QUIT	"QUIT"
+# define RQ_RNFR	"RNFR"
+# define RQ_RNTO	"RNTO"
+# define RQ_SYST	"SYST"
 
 # define CMD_LIST	"ls"
 # define CMD_DIR	"dir"
 # define CMD_CWD	"cd"
 # define CMD_MKD	"mkdir"
 # define CMD_DELE	"delete"
+# define CMD_RN		"rename"
 # define CMD_RMD	"rmdir"
 # define CMD_FTP	"ftp"
 # define CMD_OPEN	"open"
@@ -69,6 +74,20 @@
 # define CMD_DISC	"disconnect"
 # define CMD_GET	"get"
 # define CMD_PUT	"put"
+
+# define ENV_PWD	"PWD"
+
+# define PATH_SIZE	1024
+
+# define WELCOME	"Welcome to My_FTP {EPITECH.} of candan_c\n"
+
+# define CODE_OK	"220\n"
+
+/*
+**
+*/
+
+# define CODE(buf, pos)	((buf)[pos])
 
 /*
 **
@@ -82,11 +101,20 @@
 **
 */
 
+typedef struct	s_ftp
+{
+  char		*host;
+  char		*port;
+  char		root[1024];
+  int		s;
+  int		cs;
+}		t_ftp;
+
 typedef struct	s_cmd
 {
-  int		cs;
   char		*app;
   char		*param;
+  t_ftp		*f;
 }		t_cmd;
 
 typedef struct	s_req
@@ -109,10 +137,10 @@ extern	t_req	gl_req[];
 
 char	*parse_arg(char *param, int pos, int ac, char **av);
 int	create_server(char *port);
-int	get_client(int cs);
+void	get_client(t_ftp *f);
 char	*trim(char *s);
 
-int	cmd_init(t_cmd *c, int cs, char *s);
+int	cmd_init(t_cmd *c, t_ftp *f, char *s);
 void	cmd_server(t_cmd *c, t_req *r);
 void	cmd_client(t_cmd *c, t_req *r);
 void	cmd_exec(t_cmd *c,t_req *r);
@@ -133,6 +161,8 @@ int	req_mode(t_cmd *c, t_req *r);
 int	req_size(t_cmd *c, t_req *r);
 int	req_stat(t_cmd *c, t_req *r);
 int	req_quit(t_cmd *c, t_req *r);
+int	req_rn(t_cmd *c, t_req *r);
+int	req_syst(t_cmd *c, t_req *r);
 
 int	xaccept(int s, struct sockaddr *addr, socklen_t *addrlen);
 int	xbind(int s, const struct sockaddr *addr, socklen_t addrlen);
@@ -141,5 +171,7 @@ int	xlisten(int s, int backlog);
 ssize_t	xrecv(int s, void *buf, size_t len, int flags);
 ssize_t	xsend(int s, const void *msg, size_t len, int flags);
 int	xsocket(int domain, int type, int protocol);
+
+int	control_path(t_ftp *f, char *path);
 
 #endif /* !__MY_FTP_H__ */

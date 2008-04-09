@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 00:52:02 2008 caner candan
-** Last update Wed Apr  9 09:39:19 2008 caner candan
+** Last update Wed Apr  9 10:36:03 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -16,6 +16,7 @@
 
 int	req_rmd(t_cmd *c, t_req *r)
 {
+  r = 0;
   printf("req_rmd()\n");
   rmdir(c->param);
   return (0);

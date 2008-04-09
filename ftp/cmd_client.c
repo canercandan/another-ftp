@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 20:31:59 2008 caner candan
-** Last update Tue Apr  8 20:58:33 2008 caner candan
+** Last update Wed Apr  9 12:14:00 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -15,16 +15,16 @@
 #include <unistd.h>
 #include "my_ftp.h"
 
-void	cmd_client(t_cmd *cmd, t_req *req)
+void	cmd_client(t_cmd *c, t_req *r)
 {
   int	pid;
   int	signal;
 
   if (!(pid = fork()))
     {
-      dup2(cmd->cs, STDOUT_FILENO);
-      dup2(cmd->cs, STDERR_FILENO);
-      cmd_exec(cmd, req);
+      dup2(c->f->cs, STDOUT_FILENO);
+      dup2(c->f->cs, STDERR_FILENO);
+      cmd_exec(c, r);
       exit(0);
     }
   wait(&signal);

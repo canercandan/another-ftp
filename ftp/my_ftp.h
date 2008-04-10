@@ -5,11 +5,13 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Wed Apr  9 21:44:52 2008 caner candan
+** Last update Thu Apr 10 09:25:39 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
 # define __MY_FTP_H__
+
+# define DEBUG		1
 
 # define MESG_WELCOME	"[[[ Welcome to My_FTP {EPITECH.} ]]]"
 # define MESG_SLOTS	"You are user number %d of %d allowed."
@@ -28,6 +30,7 @@
 
 # define TYPE_UNIX	"UNIX"
 
+# define HOST_DEFAULT	"127.0.0.1"
 # define PORT_DEFAULT	"12345"
 # define NB_CLI		5
 
@@ -153,8 +156,10 @@ extern	t_req	gl_req[];
 */
 
 char	*parse_arg(char *param, int pos, int ac, char **av);
-int	create_server(char *port);
+void	create_server(t_ftp *f);
+void	create_client(t_ftp *f);
 void	get_client(t_ftp *f);
+void	get_server(t_ftp *f);
 char	*trim(char *s);
 
 int	cmd_init(t_cmd *c, t_ftp *f, char *s);

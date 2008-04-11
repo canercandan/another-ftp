@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Thu Apr 10 20:17:04 2008 caner candan
+** Last update Fri Apr 11 16:48:31 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
@@ -157,7 +157,7 @@ extern	t_req	gl_req[];
 
 char	*parse_arg(char *param, int pos, int ac, char **av);
 void	create_server(t_ftp *f);
-void	create_client(t_ftp *f);
+int	create_client(t_ftp *f);
 void	get_client(t_ftp *f);
 void	get_server(t_ftp *f);
 char	*trim(char *s);

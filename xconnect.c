@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 09:53:56 2008 caner candan
-** Last update Thu Apr 10 19:25:33 2008 caner candan
+** Last update Fri Apr 11 14:00:48 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -26,5 +26,5 @@ int	xconnect(int s, const void *name, void *namelen)
       close(s);
       exit(FALSE);
     }
-  return (s);
+  return (rc);
 }

@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 20:37:42 2008 caner candan
-** Last update Thu Apr  3 22:20:19 2008 caner candan
+** Last update Tue Apr  8 18:00:36 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -18,7 +18,7 @@ char	*trim(char *s)
   int	i;
 
   for (i = 0; s[i]; i++)
-    if (s[i] == '\n')
+    if (s[i] == '\n' || s[i] == 0xD)
       {
 	s[i] = '\0';
 	break;

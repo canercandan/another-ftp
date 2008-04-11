@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 09:24:30 2008 caner candan
-** Last update Fri Apr  4 17:24:57 2008 caner candan
+** Last update Tue Apr  8 15:24:40 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -23,7 +23,7 @@ int	xsocket(int domain, int type, int protocol)
     {
       fprintf(stderr, "server - error with socket()\n");
       close(s);
-      exit(FAILED);
+      exit(FALSE);
     }
   return (s);
 }

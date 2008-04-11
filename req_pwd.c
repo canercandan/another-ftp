@@ -5,16 +5,28 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 14:55:50 2008 caner candan
-** Last update Tue Apr  8 14:57:49 2008 caner candan
+** Last update Thu Apr 10 19:58:47 2008 caner candan
 */
 
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <unistd.h>
+#include <string.h>
 #include <stdio.h>
 #include "my_ftp.h"
 
-int	req_pwd(t_cmd *cmd)
+int	req_pwd(t_cmd *c, t_req *r)
 {
+  char	path[PATH_SIZE];
+  int	len;
+
+  r = 0;
   printf("req_pwd()\n");
+  getcwd(path, PATH_SIZE);
+  len = strlen(path);
+  xsend(c->f->cs, path, (void *) len, 0);
+  xsend(c->f->cs, "\n", (void *) 2, 0);
+  write(1, path, len);
+  write(1, "\n", 2);
   return (0);
 }

@@ -5,7 +5,7 @@
 ## Login   <candan_c@epitech.net>
 ## 
 ## Started on  Thu Apr  3 09:18:14 2008 caner candan
-## Last update Tue Apr  8 14:58:40 2008 caner candan
+## Last update Thu Apr 10 09:17:59 2008 caner candan
 ##
 
 CLI		=	client
@@ -20,15 +20,40 @@ SRC		=	xsocket.c		\
 			xconnect.c		\
 			parse_arg.c		\
 			create_server.c		\
+			create_client.c		\
 			get_client.c		\
-			send_cmd.c		\
-			send_cmd_client.c	\
-			send_cmd_server.c	\
-			send_cmd_param.c	\
+			get_server.c		\
 			trim.c			\
 			req_init.c		\
 			req_list.c		\
-			req_pwd.c
+			req_get.c		\
+			req_put.c		\
+			req_user.c		\
+			req_pass.c		\
+			req_acct.c		\
+			req_pwd.c		\
+			req_cwd.c		\
+			req_mkd.c		\
+			req_dele.c		\
+			req_rmd.c		\
+			req_port.c		\
+			req_mode.c		\
+			req_size.c		\
+			req_stat.c		\
+			req_quit.c		\
+			req_rn.c		\
+			req_syst.c		\
+			req_feat.c		\
+			req_epsv.c		\
+			req_pasv.c		\
+			req_eprt.c		\
+			cmd_init.c		\
+			cmd_server.c		\
+			cmd_client.c		\
+			cmd_exec.c		\
+			control_path.c		\
+			mesg_start.c		\
+			mesg_dump.c
 
 CLI_SRC		=	client.c		\
 			$(SRC)

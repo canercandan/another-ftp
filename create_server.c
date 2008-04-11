@@ -5,25 +5,28 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 11:51:29 2008 caner candan
-** Last update Thu Apr  3 12:00:43 2008 caner candan
+** Last update Thu Apr 10 19:44:36 2008 caner candan
 */
 
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 #include "my_ftp.h"
 
-int			create_server(char *port)
+void			create_server(t_ftp *f)
 {
   struct sockaddr_in	addr;
-  int			s;
 
-  s = xsocket(PF_INET, SOCK_STREAM, 0);
+  if (DEBUG)
+    printf("create_server()\n");
+  f->s = xsocket(PF_INET, SOCK_STREAM, 0);
   addr.sin_family = AF_INET;
   addr.sin_addr.s_addr = htonl(INADDR_ANY);
-  addr.sin_port = htons(atoi(port));
-  xbind(s, (struct sockaddr *) &addr, sizeof(addr));
-  xlisten(s, NB_CLI);
-  return (s);
+  addr.sin_port = htons(atoi(f->port));
+  xbind(f->s, (struct sockaddr *) &addr, (void *) sizeof(addr));
+  xlisten(f->s, NB_CLI);
+  getcwd(f->root, sizeof(f->root));
 }

@@ -5,7 +5,7 @@
 ## Login   <candan_c@epitech.net>
 ## 
 ## Started on  Thu Apr  3 09:18:14 2008 caner candan
-## Last update Thu Apr 10 09:17:59 2008 caner candan
+## Last update Fri Apr 11 12:16:23 2008 caner candan
 ##
 
 CLI		=	client
@@ -84,6 +84,7 @@ $(SRV)		:	$(SRV_OBJ)
 clean		:
 			$(RM) *~
 			$(RM) *.o
+			$(RM) *.core
 
 fclean		:	clean
 			$(RM) $(CLI)

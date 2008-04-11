@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:12:20 2008 caner candan
-** Last update Thu Apr 10 09:30:53 2008 caner candan
+** Last update Fri Apr 11 09:51:45 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -20,7 +20,7 @@ int	main(int ac, char **av)
   f.host = (ac < 2 ? HOST_DEFAULT : av[1]);
   f.port = (ac < 3 ? PORT_DEFAULT : av[2]);
   create_client(&f);
-  if ((f.cs = xaccept(f.s, NULL, NULL)))
+  if ((f.cs = xconnect(f.s, NULL, NULL)))
     get_server(&f);
   close(f.s);
   return (TRUE);

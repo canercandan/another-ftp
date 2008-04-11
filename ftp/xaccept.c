@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 09:37:35 2008 caner candan
-** Last update Tue Apr  8 15:25:35 2008 caner candan
+** Last update Thu Apr 10 19:23:38 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -15,11 +15,12 @@
 #include <unistd.h>
 #include "my_ftp.h"
 
-int	xaccept(int s, struct sockaddr * addr, socklen_t * addrlen)
+int	xaccept(int s, void *addr, void *addrlen)
 {
   int	sd;
 
-  if ((sd = accept(s, addr, addrlen)) < 0)
+  if ((sd = accept(s, (struct sockaddr *) addr,
+		   (socklen_t *) addrlen)) < 0)
     {
       fprintf(stderr, "Error with accept\n");
       close(s);

@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Thu Apr 10 09:25:39 2008 caner candan
+** Last update Thu Apr 10 20:17:04 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
@@ -191,12 +191,12 @@ int	req_epsv(t_cmd *c, t_req *r);
 int	req_pasv(t_cmd *c, t_req *r);
 int	req_eprt(t_cmd *c, t_req *r);
 
-int	xaccept(int s, struct sockaddr *addr, socklen_t *addrlen);
-int	xbind(int s, const struct sockaddr *addr, socklen_t addrlen);
-int	xconnect(int s, const struct sockaddr *name, socklen_t namelen);
+int	xaccept(int s, void *addr, void *addrlen);
+int	xbind(int s, const void *addr, void *addrlen);
+int	xconnect(int s, const void *name, void *namelen);
 int	xlisten(int s, int backlog);
-ssize_t	xrecv(int s, void *buf, size_t len, int flags);
-ssize_t	xsend(int s, const void *msg, size_t len, int flags);
+void	*xrecv(int s, void *buf, void *len, int flags);
+void	*xsend(int s, const void *msg, void *len, int flags);
 int	xsocket(int domain, int type, int protocol);
 
 int	control_path(t_ftp *f, char *path);

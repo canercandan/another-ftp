@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 09:48:28 2008 caner candan
-** Last update Tue Apr  8 15:25:45 2008 caner candan
+** Last update Thu Apr 10 19:45:33 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -15,11 +15,11 @@
 #include <unistd.h>
 #include "my_ftp.h"
 
-ssize_t	xrecv(int s, void *buf, size_t len, int flags)
+void	*xrecv(int s, void *buf, void *len, int flags)
 {
-  int	rc;
+  void	*rc;
 
-  if ((rc = recv(s, buf, len, flags)) < 0)
+  if ((int) (rc = (void *) recv(s, buf, (size_t) len, flags)) < 0)
     {
       fprintf(stderr, "Error with recv()\n");
       close(s);

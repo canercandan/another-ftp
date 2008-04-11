@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 15:17:32 2008 caner candan
-** Last update Wed Apr  9 12:10:04 2008 caner candan
+** Last update Thu Apr 10 19:58:22 2008 caner candan
 */
 
 #include <sys/socket.h>
@@ -26,10 +26,10 @@ int	req_get(t_cmd *c, t_req *r)
   fd = open(c->param, O_RDONLY);
   while ((nbr = read(fd, buf, sizeof(buf))) > 0)
     {
-      xsend(c->f->cs, buf, nbr, 0);
+      xsend(c->f->cs, buf, (void *) nbr, 0);
       write(1, buf, nbr);
     }
-  xsend(c->f->cs, "\n", 2, 0);
+  xsend(c->f->cs, "\n", (void *) 2, 0);
   write(1, "\n", 2);
   close(fd);
   return (0);

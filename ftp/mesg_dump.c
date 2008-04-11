@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 19:47:07 2008 caner candan
-** Last update Wed Apr  9 21:20:56 2008 caner candan
+** Last update Thu Apr 10 19:59:29 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -23,5 +23,5 @@ void	mesg_dump(int cs, t_msg *m)
   bzero(buf, sizeof(buf));
   sprintf(buf, MESG_CODE, m->cde_x, m->cde_y,
 	  m->cde_z, m->is_send, m->mesg);
-  xsend(cs, buf, strlen(buf), 0);
+  xsend(cs, buf, (void *) strlen(buf), 0);
 }

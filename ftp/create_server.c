@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 11:51:29 2008 caner candan
-** Last update Thu Apr 10 09:23:01 2008 caner candan
+** Last update Thu Apr 10 19:44:36 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -26,7 +26,7 @@ void			create_server(t_ftp *f)
   addr.sin_family = AF_INET;
   addr.sin_addr.s_addr = htonl(INADDR_ANY);
   addr.sin_port = htons(atoi(f->port));
-  xbind(f->s, (struct sockaddr *) &addr, sizeof(addr));
+  xbind(f->s, (struct sockaddr *) &addr, (void *) sizeof(addr));
   xlisten(f->s, NB_CLI);
   getcwd(f->root, sizeof(f->root));
 }

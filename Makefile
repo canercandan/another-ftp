@@ -5,7 +5,7 @@
 ## Login   <candan_c@epitech.net>
 ## 
 ## Started on  Thu Apr  3 09:18:14 2008 caner candan
-## Last update Fri Apr 11 12:16:23 2008 caner candan
+## Last update Fri Apr 11 19:48:47 2008 caner candan
 ##
 
 CLI		=	client
@@ -53,7 +53,8 @@ SRC		=	xsocket.c		\
 			cmd_exec.c		\
 			control_path.c		\
 			mesg_start.c		\
-			mesg_dump.c
+			mesg_dump.c		\
+			prompt.c
 
 CLI_SRC		=	client.c		\
 			$(SRC)

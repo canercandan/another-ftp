@@ -5,11 +5,9 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 21:25:50 2008 caner candan
-** Last update Tue Apr  8 22:24:32 2008 caner candan
+** Last update Fri Apr 11 19:25:56 2008 caner candan
 */
 
-#include <sys/types.h>
-#include <sys/socket.h>
 #include <unistd.h>
 #include "my_ftp.h"
 

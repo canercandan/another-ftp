@@ -5,11 +5,9 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 11:02:12 2008 caner candan
-** Last update Wed Apr  9 12:15:42 2008 caner candan
+** Last update Fri Apr 11 19:27:15 2008 caner candan
 */
 
-#include <sys/types.h>
-#include <sys/socket.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

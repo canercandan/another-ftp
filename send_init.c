@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 17:56:02 2008 caner candan
-** Last update Sun Apr 13 21:02:19 2008 caner candan
+** Last update Sun Apr 13 22:15:39 2008 caner candan
 */
 
 #include <string.h>
@@ -39,18 +39,10 @@ int	send_init(t_ftp *f, char *s)
 {
   t_cmd	c;
   int	i;
-  char	*param;
 
   if (DEBUG)
     printf("send_init()\n");
-  c.f = f;
-  c.app = strtok(s, DELIMIT);
-  s = NULL;
-  if ((param = strtok(s, DELIMIT)))
-    c.param = param;
-  else
-    c.param = 0;
-  if (!c.app)
+  if (cmd_init(&c, f, s) == FALSE)
     return (EMPTY);
   for (i = 0; gl_snd[i].snd; i++)
     if (!strcmp(gl_snd[i].snd, c.app))

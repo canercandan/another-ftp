@@ -5,13 +5,13 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Sun Apr 13 20:39:03 2008 caner candan
+** Last update Mon Apr 14 00:08:31 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
 # define __MY_FTP_H__
 
-# define DEBUG		0
+# define DEBUG		1
 
 # define MESG_WELCOME	"[[[ Welcome to My_FTP {EPITECH.} ]]]"
 # define MESG_SLOTS	"You are user number %d of %d allowed."
@@ -54,9 +54,6 @@
 # define RET_QUIT	2
 # define EMPTY		3
 
-//# define EOR		1 /* determine end of transfert */
-//# define EOF		2 /* determine end of file transfered */
-
 # define RQ_LIST	"LIST"
 # define RQ_GET		"GET"
 # define RQ_PUT		"PUT"
@@ -82,7 +79,7 @@
 # define RQ_EPRT	"EPRT"
 # define RQ_NOOP	"NOOP"
 
-# define SD_FMT		"%s %s\r\n"
+# define SD_FMT		"%s %s %s\r\n"
 
 # define SD_LIST	"ls"
 # define SD_DIR		"dir"
@@ -132,6 +129,7 @@ typedef struct	s_cmd
 {
   char		*app;
   char		*param;
+  char		*param2;
   t_ftp		*f;
 }		t_cmd;
 

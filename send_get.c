@@ -5,14 +5,36 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 18:17:59 2008 caner candan
-** Last update Sun Apr 13 19:10:51 2008 caner candan
+** Last update Mon Apr 14 00:08:02 2008 caner candan
 */
 
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "my_ftp.h"
 
 int	send_get(t_cmd *c, t_snd *s)
 {
-  c = NULL;
+  char	buf[1024];
+  int	nbr;
+  int	fd;
+  int	len;
+  int	i;
+
   s = NULL;
-  return (0);
+  if (DEBUG)
+    printf("send_get()\n");
+  if ((fd = open(c->param, O_WRONLY | O_CREAT, 0644)) < 0)
+    {
+      close(fd);
+      return (FALSE);
+    }
+  len = atoi(c->param2);
+  for (i = 0; i < len; i += sizeof(buf))
+    if ((nbr = (int) xrecv(c->f->s, buf, (void *) sizeof(buf), 0)) > 0)
+      write(fd, buf, nbr);
+  mesg_dump(c->f->s, NULL, "2201");
+  close(fd);
+  return (TRUE);
 }

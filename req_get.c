@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 15:17:32 2008 caner candan
-** Last update Fri Apr 11 19:26:15 2008 caner candan
+** Last update Sun Apr 13 20:25:43 2008 caner candan
 */
 
 #include <stdio.h>
@@ -20,7 +20,8 @@ int	req_get(t_cmd *c, t_req *r)
   int	nbr;
 
   r = NULL;
-  printf("req_get()\n");
+  if (DEBUG)
+    printf("req_get()\n");
   fd = open(c->param, O_RDONLY);
   while ((nbr = read(fd, buf, sizeof(buf))) > 0)
     {

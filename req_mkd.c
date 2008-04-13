@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 21:22:34 2008 caner candan
-** Last update Fri Apr 11 19:26:29 2008 caner candan
+** Last update Sun Apr 13 20:27:25 2008 caner candan
 */
 
 #include <sys/stat.h>
@@ -15,7 +15,8 @@
 int	req_mkd(t_cmd *c, t_req *r)
 {
   r = 0;
-  printf("req_mkd()\n");
+  if (DEBUG)
+    printf("req_mkd()\n");
   mkdir(c->param, 0755);
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 14:55:50 2008 caner candan
-** Last update Sun Apr 13 19:30:26 2008 caner candan
+** Last update Sun Apr 13 20:23:57 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -21,8 +21,9 @@ int	req_pwd(t_cmd *c, t_req *r)
   int	len;
 
   r = 0;
-  printf("req_pwd()\n");
-  mesg_dump(c->f->cs, NULL, "2201");
+  if (DEBUG)
+    printf("req_pwd()\n");
+  mesg_dump(c->f->cs, NULL, "2571");
   getcwd(path, PATH_SIZE);
   len = strlen(path);
   xsend(c->f->cs, path, (void *) len, 0);

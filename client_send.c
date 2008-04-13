@@ -5,11 +5,13 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 17:49:34 2008 caner candan
-** Last update Sun Apr 13 19:23:03 2008 caner candan
+** Last update Sun Apr 13 20:20:24 2008 caner candan
 */
 
 #include <unistd.h>
 #include <strings.h>
+#include <stdio.h>
+#include <string.h>
 #include "my_ftp.h"
 
 void	client_send(t_ftp *f)
@@ -17,12 +19,17 @@ void	client_send(t_ftp *f)
   char	buf[1024];
   int	nbr;
 
-  prompt();
-  bzero(buf, sizeof(buf));
-  while ((nbr = read(0, buf, sizeof(buf))))
+  if (DEBUG)
+    printf("client_send()\n");
+  while (42)
     {
-      send_init(f, buf);
       bzero(buf, sizeof(buf));
-      prompt();
+      if ((nbr = read(0, buf, sizeof(buf))))
+	{
+	  if (send_init(f, buf))
+	    send_noop(f);
+	}
+      else
+	break;
     }
 }

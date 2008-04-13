@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 11:18:05 2008 caner candan
-** Last update Sat Apr 12 13:21:41 2008 caner candan
+** Last update Sun Apr 13 20:28:04 2008 caner candan
 */
 
 #include <stdio.h>
@@ -16,7 +16,8 @@ int	req_pasv(t_cmd *c, t_req *r)
   char	mesg[200];
 
   r = NULL;
-  printf("req_pasv()\n");
+  if (DEBUG)
+    printf("req_pasv()\n");
   sprintf(mesg, "pasv");
   mesg_dump(c->f->cs, mesg, "2201");
   return (0);

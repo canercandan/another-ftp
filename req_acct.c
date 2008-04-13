@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 18:06:18 2008 caner candan
-** Last update Fri Apr 11 19:25:46 2008 caner candan
+** Last update Sun Apr 13 20:24:41 2008 caner candan
 */
 
 #include <stdio.h>
@@ -16,6 +16,7 @@ int	req_acct(t_cmd *c, t_req *r)
 {
   c = NULL;
   r = NULL;
-  printf("req_acct()\n");
+  if (DEBUG)
+    printf("req_acct()\n");
   return (0);
 }

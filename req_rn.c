@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 11:02:12 2008 caner candan
-** Last update Fri Apr 11 19:27:15 2008 caner candan
+** Last update Sun Apr 13 20:29:12 2008 caner candan
 */
 
 #include <stdio.h>
@@ -18,6 +18,8 @@ int		req_rn(t_cmd *c, t_req *r)
   static char	*from;
 
   r = 0;
+  if (DEBUG)
+    printf("req_rn()\n");
   if (control_path(c->f, c->param) == FALSE)
     return (FALSE);
   if (!from)

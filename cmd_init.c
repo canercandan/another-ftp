@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 18:36:01 2008 caner candan
-** Last update Fri Apr 11 19:28:27 2008 caner candan
+** Last update Sun Apr 13 20:33:39 2008 caner candan
 */
 
 #include <string.h>
@@ -15,7 +15,8 @@
 
 int	cmd_init(t_cmd *c, t_ftp *f, char *s)
 {
-  printf("cmd_init()\n");
+  if (DEBUG)
+    printf("cmd_init()\n");
   c->f = f;
   c->app = NULL;
   c->param = NULL;
@@ -24,6 +25,7 @@ int	cmd_init(t_cmd *c, t_ftp *f, char *s)
   c->param = strtok(s, DELIMIT);
   if (!c->app)
     return (FALSE);
-  printf("app: %s, param: %s\n", c->app, c->param);
+  if (DEBUG)
+    printf("app: %s, param: %s\n", c->app, c->param);
   return (TRUE);
 }

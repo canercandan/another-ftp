@@ -5,15 +5,18 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 21:19:33 2008 caner candan
-** Last update Fri Apr 11 19:25:51 2008 caner candan
+** Last update Sun Apr 13 20:30:23 2008 caner candan
 */
 
 #include <unistd.h>
+#include <stdio.h>
 #include "my_ftp.h"
 
 int	req_cwd(t_cmd *c, t_req *r)
 {
   r = 0;
+  if (DEBUG)
+    printf("req_cwd()\n");
   if (control_path(c->f, c->param) == FALSE)
     return (FALSE);
   chdir(c->param);

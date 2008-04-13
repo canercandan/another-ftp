@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 14:46:58 2008 caner candan
-** Last update Sun Apr 13 19:29:24 2008 caner candan
+** Last update Sun Apr 13 20:27:17 2008 caner candan
 */
 
 #include <string.h>
@@ -34,6 +34,7 @@ t_req	gl_req[] = {
   {RQ_SYST, req_syst, 0, 0},
   {RQ_FEAT, req_feat, 0, 0},
   {RQ_EPSV, req_epsv, 0, 0},
+  {RQ_NOOP, req_noop, 0, 0},
   {0, 0, 0, 0}
 };
 
@@ -41,7 +42,8 @@ int	req_init(t_cmd *c)
 {
   int	i;
 
-  printf("req_init()\n");
+  if (DEBUG)
+    printf("req_init()\n");
   if (!c)
     return (FALSE);
   for (i = 0; gl_req[i].req; i++)

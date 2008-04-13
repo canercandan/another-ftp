@@ -5,13 +5,13 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Sun Apr 13 19:35:25 2008 caner candan
+** Last update Sun Apr 13 20:21:33 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
 # define __MY_FTP_H__
 
-# define DEBUG		1
+# define DEBUG		0
 
 # define MESG_WELCOME	"[[[ Welcome to My_FTP {EPITECH.} ]]]"
 # define MESG_SLOTS	"You are user number %d of %d allowed."
@@ -77,6 +77,7 @@
 # define RQ_EPSV	"EPSV"
 # define RQ_PASV	"PASV"
 # define RQ_EPRT	"EPRT"
+# define RQ_NOOP	"NOOP"
 
 # define SD_FMT		"%s %s\r\n"
 
@@ -192,6 +193,7 @@ int	req_feat(t_cmd *c, t_req *r);
 int	req_epsv(t_cmd *c, t_req *r);
 int	req_pasv(t_cmd *c, t_req *r);
 int	req_eprt(t_cmd *c, t_req *r);
+int	req_noop(t_cmd *c, t_req *r);
 
 int	xaccept(int s, void *addr, void *addrlen);
 int	xbind(int s, const void *addr, void *addrlen);
@@ -232,5 +234,6 @@ int	send_bye(t_cmd *c, t_snd *s);
 int	send_disc(t_cmd *c, t_snd *s);
 int	send_get(t_cmd *c, t_snd *s);
 int	send_put(t_cmd *c, t_snd *s);
+int	send_noop(t_ftp *f);
 
 #endif /* !__MY_FTP_H__ */

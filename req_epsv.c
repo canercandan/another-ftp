@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 11:18:05 2008 caner candan
-** Last update Sat Apr 12 13:21:00 2008 caner candan
+** Last update Sun Apr 13 20:25:23 2008 caner candan
 */
 
 #include <stdio.h>
@@ -16,7 +16,8 @@ int	req_epsv(t_cmd *c, t_req *r)
   char	mesg[200];
 
   r = NULL;
-  printf("req_epsv()\n");
+  if (DEBUG)
+    printf("req_epsv()\n");
   sprintf(mesg, "Extended Passive mode OK (|||28246|)");
   mesg_dump(c->f->cs, mesg, "2201");
   return (0);

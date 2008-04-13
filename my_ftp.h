@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Sun Apr 13 20:21:33 2008 caner candan
+** Last update Sun Apr 13 20:39:03 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
@@ -22,6 +22,8 @@
 # define MESG_USER_DIR	"OK. Current restricted directory is /"
 # define MESG_SYS_TYPE	"Remote system type is %s"
 # define MESG_MODE	"Using %s mode to transfer files."
+
+# define ERR_INVALID	"?Invalid command.\n"
 
 # define MESG_CODE	"%c%c%c%c%s\r\n"
 
@@ -50,6 +52,7 @@
 # define TRUE		0
 # define WAIT		1
 # define RET_QUIT	2
+# define EMPTY		3
 
 //# define EOR		1 /* determine end of transfert */
 //# define EOF		2 /* determine end of file transfered */

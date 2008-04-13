@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 17:49:34 2008 caner candan
-** Last update Sun Apr 13 20:20:24 2008 caner candan
+** Last update Sun Apr 13 21:02:31 2008 caner candan
 */
 
 #include <unistd.h>
@@ -24,10 +24,11 @@ void	client_send(t_ftp *f)
   while (42)
     {
       bzero(buf, sizeof(buf));
-      if ((nbr = read(0, buf, sizeof(buf))))
+      if ((nbr = read(0, buf, sizeof(buf))) > 0)
 	{
-	  if (send_init(f, buf))
-	    send_noop(f);
+	  if (send_init(f, buf) == FALSE)
+	    printf(ERR_INVALID);
+	  send_noop(f);
 	}
       else
 	break;

@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 17:56:02 2008 caner candan
-** Last update Sun Apr 13 19:26:25 2008 caner candan
+** Last update Sun Apr 13 21:02:19 2008 caner candan
 */
 
 #include <string.h>
@@ -51,9 +51,9 @@ int	send_init(t_ftp *f, char *s)
   else
     c.param = 0;
   if (!c.app)
-    return (FALSE);
+    return (EMPTY);
   for (i = 0; gl_snd[i].snd; i++)
     if (!strcmp(gl_snd[i].snd, c.app))
       return (gl_snd[i].f(&c, &gl_snd[i]));
-  return (0);
+  return (FALSE);
 }

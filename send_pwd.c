@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 18:17:59 2008 caner candan
-** Last update Sun Apr 13 19:28:36 2008 caner candan
+** Last update Sun Apr 13 20:59:49 2008 caner candan
 */
 
 #include <stdio.h>
@@ -14,8 +14,11 @@
 
 int	send_pwd(t_cmd *c, t_snd *s)
 {
+  char	buf[200];
+
   if (DEBUG)
     printf("send_pwd()\n");
-  xsend(c->f->s, s->req, (void *) strlen(s->req), 0);
+  sprintf(buf, SD_FMT, s->req, "");
+  xsend(c->f->s, buf, (void *) strlen(buf), 0);
   return (0);
 }

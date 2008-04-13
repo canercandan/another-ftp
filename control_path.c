@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 11:30:17 2008 caner candan
-** Last update Fri Apr 11 19:28:42 2008 caner candan
+** Last update Sun Apr 13 21:00:45 2008 caner candan
 */
 
 #include <unistd.h>
@@ -21,8 +21,9 @@ int	control_path(t_ftp *f, char *path)
   getcwd(before, PATH_SIZE);
   chdir(path);
   getcwd(after, PATH_SIZE);
-  printf("root: %s, before: %s, after: %s\n",
-	 f->root, before, after);
+  if (DEBUG)
+    printf("root: %s, before: %s, after: %s\n",
+	   f->root, before, after);
   if (!strncmp(f->root, after, strlen(f->root)))
     return (TRUE);
   chdir(before);

@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Fri Apr 11 19:48:37 2008 caner candan
+** Last update Sun Apr 13 12:02:59 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
@@ -23,7 +23,7 @@
 # define MESG_SYS_TYPE	"Remote system type is %s"
 # define MESG_MODE	"Using %s mode to transfer files."
 
-# define MESG_CODE	"%c%c%c%c%s\n"
+# define MESG_CODE	"%c%c%c%c%s\r\n"
 
 # define MESG_SEND	' '
 # define MESG_NOTSEND	'-'
@@ -112,15 +112,6 @@
 **
 */
 
-typedef struct	s_msg
-{
-  char		cde_x;
-  char		cde_y;
-  char		cde_z;
-  char		is_send;
-  char		mesg[200];
-}		t_msg;
-
 typedef struct	s_ftp
 {
   char		*host;
@@ -202,8 +193,12 @@ int	xsocket(int domain, int type, int protocol);
 int	control_path(t_ftp *f, char *path);
 
 void	mesg_start(t_ftp *f);
-void	mesg_dump(int cs, t_msg *m);
+void	mesg_dump(int cs, char *mesg, char *cde);
 
 void	prompt();
+
+char	*get_next_line(int fd);
+
+void	client_signal(int signal);
 
 #endif /* !__MY_FTP_H__ */

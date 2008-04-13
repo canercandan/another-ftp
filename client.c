@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:12:20 2008 caner candan
-** Last update Fri Apr 11 19:24:43 2008 caner candan
+** Last update Sun Apr 13 14:14:52 2008 caner candan
 */
 
 #include <unistd.h>
@@ -22,9 +22,3 @@ int	main(int ac, char **av)
   close(f.s);
   return (TRUE);
 }
-
-/*
-  TODO
-  ----
-  - Broken pipe : server stoped
-*/

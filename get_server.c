@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 22:25:28 2008 caner candan
-** Last update Fri Apr 11 20:12:24 2008 caner candan
+** Last update Sun Apr 13 16:38:18 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -13,24 +13,28 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 #include "my_ftp.h"
 
 void	get_server(t_ftp *f)
 {
-  char	buf[10];
+  char	*s;
+  char	cmd[254];
+  char	buf[1024];
   int	nbr;
+  int	pid;
 
   if (DEBUG)
     printf("get_server()\n");
+  nbr = recv(f->cs, buf, sizeof(buf), 0);
+  write(1, buf, nbr);
   prompt();
-  while ((nbr = read(0, buf, sizeof(buf))) > 0)
+  while (42)
     {
-      xsend(f->s, buf, (void *) nbr, 0);
-      while ((nbr = read(f->s, buf, sizeof(buf))) > 0)
-	{
-	  write(1, buf, nbr);
-	  printf("nbr: %d\n", nbr);
-	}
+      if ((s = get_next_line(0)))
+	send(f->cs, s, strlen(s), 0);
+      if ((nbr = recv(f->cs, buf, sizeof(buf), 0)) > 0)
+	write(1, buf, nbr);
       prompt();
     }
 }

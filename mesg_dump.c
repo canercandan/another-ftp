@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 19:47:07 2008 caner candan
-** Last update Thu Apr 10 19:59:29 2008 caner candan
+** Last update Sun Apr 13 16:30:08 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -15,13 +15,15 @@
 #include <strings.h>
 #include "my_ftp.h"
 
-void	mesg_dump(int cs, t_msg *m)
+void	mesg_dump(int cs, char *mesg, char *cde)
 {
   char	buf[200];
+  char	sendctr;
 
   printf("mesg_dump()\n");
   bzero(buf, sizeof(buf));
-  sprintf(buf, MESG_CODE, m->cde_x, m->cde_y,
-	  m->cde_z, m->is_send, m->mesg);
+  sendctr = (cde[3] == '1' ? ' ' : '-');
+  sprintf(buf, MESG_CODE, cde[0], cde[1],
+	  cde[2], sendctr, mesg);
   xsend(cs, buf, (void *) strlen(buf), 0);
 }

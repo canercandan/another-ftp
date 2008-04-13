@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 11:18:05 2008 caner candan
-** Last update Fri Apr 11 19:26:01 2008 caner candan
+** Last update Sat Apr 12 13:22:26 2008 caner candan
 */
 
 #include <stdio.h>
@@ -13,15 +13,11 @@
 
 int	req_eprt(t_cmd *c, t_req *r)
 {
-  t_msg	m;
+  char	mesg[200];
 
   r = NULL;
   printf("req_eprt()\n");
-  m.cde_x = '2';
-  m.cde_y = '2';
-  m.cde_z = '6';
-  m.is_send = MESG_SEND;
-  sprintf(m.mesg, "eprt");
-  mesg_dump(c->f->cs, &m);
+  sprintf(mesg, "eprt");
+  mesg_dump(c->f->cs, mesg, "2261");
   return (0);
 }

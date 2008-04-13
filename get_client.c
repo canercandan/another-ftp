@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 17:36:14 2008 caner candan
-** Last update Fri Apr 11 19:29:11 2008 caner candan
+** Last update Sun Apr 13 16:33:13 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -29,13 +29,17 @@ void	get_client(t_ftp *f)
     {
       bzero(buf, sizeof(buf));
       mesg_start(f);
-      while ((nbr = (int) xrecv(f->cs, buf, (void *) sizeof(buf), 0)) > 0)
+      //while ((nbr = (int) xrecv(f->cs, buf, (void *) sizeof(buf), 0)) > 0)
+      printf("before xrecv()\n");
+      while ((nbr = read(f->cs, buf, sizeof(buf))) > 0)
 	{
+	  printf("xrecv()\n");
 	  if (cmd_init(&c, f, trim(buf)) == TRUE)
 	    if (req_init(&c) == RET_QUIT)
 	      break;
 	  bzero(buf, sizeof(buf));
 	}
+      printf("close()\n");
       close(f->cs);
       exit(0);
     }

@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 18:05:37 2008 caner candan
-** Last update Fri Apr 11 19:27:38 2008 caner candan
+** Last update Sat Apr 12 13:24:36 2008 caner candan
 */
 
 #include <string.h>
@@ -14,15 +14,11 @@
 
 int	req_user(t_cmd *c, t_req *r)
 {
-  t_msg	m;
+  char	mesg[200];
 
   r = NULL;
   printf("req_user()\n");
-  m.cde_x = '3';
-  m.cde_y = '3';
-  m.cde_z = '1';
-  m.is_send = MESG_SEND;
-  sprintf(m.mesg, MESG_USER_OK, c->param);
-  mesg_dump(c->f->cs, &m);
+  sprintf(mesg, MESG_USER_OK, c->param);
+  mesg_dump(c->f->cs, mesg, "3311");
   return (0);
 }

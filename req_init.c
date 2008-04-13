@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Tue Apr  8 14:46:58 2008 caner candan
-** Last update Fri Apr 11 19:25:34 2008 caner candan
+** Last update Sat Apr 12 13:34:14 2008 caner candan
 */
 
 #include <string.h>
@@ -19,7 +19,7 @@ t_req	gl_req[] = {
   {RQ_USER, req_user, 0, 0},
   {RQ_PASS, req_pass, 0, 0},
   {RQ_ACCT, req_acct, 0, 0},
-  {RQ_PWD, req_pwd, "pwd", 0},
+  {RQ_PWD, req_pwd, 0, 0},
   {RQ_CWD, req_cwd, 0, 0},
   {RQ_MKD, req_mkd, 0, 0},
   {RQ_DELE, req_dele, 0, 0},

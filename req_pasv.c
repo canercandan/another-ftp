@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 11:18:05 2008 caner candan
-** Last update Fri Apr 11 19:26:42 2008 caner candan
+** Last update Sat Apr 12 13:21:41 2008 caner candan
 */
 
 #include <stdio.h>
@@ -13,15 +13,11 @@
 
 int	req_pasv(t_cmd *c, t_req *r)
 {
-  t_msg	m;
+  char	mesg[200];
 
   r = NULL;
   printf("req_pasv()\n");
-  m.cde_x = '1';
-  m.cde_y = '5';
-  m.cde_z = '0';
-  m.is_send = MESG_SEND;
-  sprintf(m.mesg, "pasv");
-  mesg_dump(c->f->cs, &m);
+  sprintf(mesg, "pasv");
+  mesg_dump(c->f->cs, mesg, "2201");
   return (0);
 }

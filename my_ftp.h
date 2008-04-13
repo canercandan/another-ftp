@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Sun Apr 13 16:48:31 2008 caner candan
+** Last update Sun Apr 13 18:32:38 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
@@ -44,7 +44,7 @@
 
 # define PWD_APP	"pwd"
 
-# define DELIMIT	" \n\t"
+# define DELIMIT	" \r\n\t"
 
 # define FALSE		-1
 # define TRUE		0
@@ -78,23 +78,23 @@
 # define RQ_PASV	"PASV"
 # define RQ_EPRT	"EPRT"
 
-# define CMD_LIST	"ls"
-# define CMD_DIR	"dir"
-# define CMD_CWD	"cd"
-# define CMD_MKD	"mkdir"
-# define CMD_DELE	"delete"
-# define CMD_RN		"rename"
-# define CMD_RMD	"rmdir"
-# define CMD_FTP	"ftp"
-# define CMD_OPEN	"open"
-# define CMD_HELP	"help"
-# define CMD_ASCII	"ascii"
-# define CMD_BINARY	"binary"
-# define CMD_QUIT	"quit"
-# define CMD_BYE	"bye"
-# define CMD_DISC	"disconnect"
-# define CMD_GET	"get"
-# define CMD_PUT	"put"
+# define SD_LIST	"ls"
+# define SD_DIR		"dir"
+# define SD_CWD		"cd"
+# define SD_MKD		"mkdir"
+# define SD_DELE	"delete"
+# define SD_RN		"rename"
+# define SD_RMD		"rmdir"
+# define SD_FTP		"ftp"
+# define SD_OPEN	"open"
+# define SD_HELP	"help"
+# define SD_ASCII	"ascii"
+# define SD_BINARY	"binary"
+# define SD_QUIT	"quit"
+# define SD_BYE		"bye"
+# define SD_DISC	"disconnect"
+# define SD_GET		"get"
+# define SD_PUT		"put"
 
 # define ENV_PWD	"PWD"
 
@@ -136,11 +136,19 @@ typedef struct	s_req
   char		*opt;
 }		t_req;
 
+typedef struct	s_snd
+{
+  char		*snd;
+  int		(*f)();
+  char		*req;
+}		t_snd;
+
 /*
 **
 */
 
-extern	t_req	gl_req[];
+extern t_req	gl_req[];
+extern t_snd	gl_snd[];
 
 /*
 **
@@ -200,5 +208,25 @@ void	prompt();
 char	*get_next_line(int fd);
 
 void	client_signal(int signal);
+void	client_listen(t_ftp *f);
+void	client_send(t_ftp *f);
+
+int	send_init(t_ftp *f, char *s);
+int	send_list(t_ftp *f, t_snd *s, char **snd);
+int	send_cwd(t_ftp *f, t_snd *s, char **snd);
+int	send_mkd(t_ftp *f, t_snd *s, char **snd);
+int	send_dele(t_ftp *f, t_snd *s, char **snd);
+int	send_rn(t_ftp *f, t_snd *s, char **snd);
+int	send_rmd(t_ftp *f, t_snd *s, char **snd);
+int	send_ftp(t_ftp *f, t_snd *s, char **snd);
+int	send_open(t_ftp *f, t_snd *s, char **snd);
+int	send_help(t_ftp *f, t_snd *s, char **snd);
+int	send_ascii(t_ftp *f, t_snd *s, char **snd);
+int	send_binary(t_ftp *f, t_snd *s, char **snd);
+int	send_quit(t_ftp *f, t_snd *s, char **snd);
+int	send_bye(t_ftp *f, t_snd *s, char **snd);
+int	send_disc(t_ftp *f, t_snd *s, char **snd);
+int	send_get(t_ftp *f, t_snd *s, char **snd);
+int	send_put(t_ftp *f, t_snd *s, char **snd);
 
 #endif /* !__MY_FTP_H__ */

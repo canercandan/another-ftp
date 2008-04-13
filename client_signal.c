@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 03:00:06 2008 caner candan
-** Last update Sun Apr 13 03:06:04 2008 caner candan
+** Last update Sun Apr 13 17:30:21 2008 caner candan
 */
 
 #include <signal.h>
@@ -18,12 +18,12 @@ void	client_signal(int signal)
 {
   if (signal == SIGINT)
     {
-      printf("\nCTRL + C\n");
+      write(1, "\n", 2);
       exit(2);
     }
   if (signal == SIGPIPE)
     {
-      printf("\nsignal from server\n");
+      printf("connection stopped\n");
       kill(getpid(), SIGINT);
     }
 }

@@ -5,7 +5,7 @@
 ## Login   <candan_c@epitech.net>
 ## 
 ## Started on  Thu Apr  3 09:18:14 2008 caner candan
-## Last update Sun Apr 13 03:04:54 2008 caner candan
+## Last update Sun Apr 13 18:31:33 2008 caner candan
 ##
 
 CLI		=	client
@@ -56,7 +56,25 @@ SRC		=	xsocket.c		\
 			mesg_dump.c		\
 			prompt.c		\
 			get_next_line.c		\
-			client_signal.c
+			client_signal.c		\
+			client_send.c		\
+			client_listen.c		\
+			send_init.c		\
+			send_list.c		\
+			send_cwd.c		\
+			send_mkd.c		\
+			send_dele.c		\
+			send_rn.c		\
+			send_rmd.c		\
+			send_ftp.c		\
+			send_open.c		\
+			send_help.c		\
+			send_ascii.c		\
+			send_binary.c		\
+			send_quit.c		\
+			send_disc.c		\
+			send_get.c		\
+			send_put.c
 
 CLI_SRC		=	client.c		\
 			$(SRC)

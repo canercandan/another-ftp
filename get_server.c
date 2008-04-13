@@ -5,11 +5,12 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 22:25:28 2008 caner candan
-** Last update Sun Apr 13 16:38:18 2008 caner candan
+** Last update Sun Apr 13 17:54:29 2008 caner candan
 */
 
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/wait.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -18,23 +19,11 @@
 
 void	get_server(t_ftp *f)
 {
-  char	*s;
-  char	cmd[254];
-  char	buf[1024];
-  int	nbr;
   int	pid;
 
   if (DEBUG)
     printf("get_server()\n");
-  nbr = recv(f->cs, buf, sizeof(buf), 0);
-  write(1, buf, nbr);
-  prompt();
-  while (42)
-    {
-      if ((s = get_next_line(0)))
-	send(f->cs, s, strlen(s), 0);
-      if ((nbr = recv(f->cs, buf, sizeof(buf), 0)) > 0)
-	write(1, buf, nbr);
-      prompt();
-    }
+  if (!(pid = fork()))
+    client_listen(f);
+  client_send(f);
 }

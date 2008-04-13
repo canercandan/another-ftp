@@ -5,7 +5,7 @@
 ## Login   <candan_c@epitech.net>
 ## 
 ## Started on  Thu Apr  3 09:18:14 2008 caner candan
-## Last update Sun Apr 13 18:31:33 2008 caner candan
+## Last update Sun Apr 13 19:26:45 2008 caner candan
 ##
 
 CLI		=	client
@@ -62,6 +62,7 @@ SRC		=	xsocket.c		\
 			send_init.c		\
 			send_list.c		\
 			send_cwd.c		\
+			send_pwd.c		\
 			send_mkd.c		\
 			send_dele.c		\
 			send_rn.c		\

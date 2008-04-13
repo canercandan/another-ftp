@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Sun Apr 13 18:32:38 2008 caner candan
+** Last update Sun Apr 13 19:35:25 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
@@ -78,9 +78,12 @@
 # define RQ_PASV	"PASV"
 # define RQ_EPRT	"EPRT"
 
+# define SD_FMT		"%s %s\r\n"
+
 # define SD_LIST	"ls"
 # define SD_DIR		"dir"
 # define SD_CWD		"cd"
+# define SD_PWD		"pwd"
 # define SD_MKD		"mkdir"
 # define SD_DELE	"delete"
 # define SD_RN		"rename"
@@ -212,21 +215,22 @@ void	client_listen(t_ftp *f);
 void	client_send(t_ftp *f);
 
 int	send_init(t_ftp *f, char *s);
-int	send_list(t_ftp *f, t_snd *s, char **snd);
-int	send_cwd(t_ftp *f, t_snd *s, char **snd);
-int	send_mkd(t_ftp *f, t_snd *s, char **snd);
-int	send_dele(t_ftp *f, t_snd *s, char **snd);
-int	send_rn(t_ftp *f, t_snd *s, char **snd);
-int	send_rmd(t_ftp *f, t_snd *s, char **snd);
-int	send_ftp(t_ftp *f, t_snd *s, char **snd);
-int	send_open(t_ftp *f, t_snd *s, char **snd);
-int	send_help(t_ftp *f, t_snd *s, char **snd);
-int	send_ascii(t_ftp *f, t_snd *s, char **snd);
-int	send_binary(t_ftp *f, t_snd *s, char **snd);
-int	send_quit(t_ftp *f, t_snd *s, char **snd);
-int	send_bye(t_ftp *f, t_snd *s, char **snd);
-int	send_disc(t_ftp *f, t_snd *s, char **snd);
-int	send_get(t_ftp *f, t_snd *s, char **snd);
-int	send_put(t_ftp *f, t_snd *s, char **snd);
+int	send_list(t_cmd *c, t_snd *s);
+int	send_cwd(t_cmd *c, t_snd *s);
+int	send_pwd(t_cmd *c, t_snd *s);
+int	send_mkd(t_cmd *c, t_snd *s);
+int	send_dele(t_cmd *c, t_snd *s);
+int	send_rn(t_cmd *c, t_snd *s);
+int	send_rmd(t_cmd *c, t_snd *s);
+int	send_ftp(t_cmd *c, t_snd *s);
+int	send_open(t_cmd *c, t_snd *s);
+int	send_help(t_cmd *c, t_snd *s);
+int	send_ascii(t_cmd *c, t_snd *s);
+int	send_binary(t_cmd *c, t_snd *s);
+int	send_quit(t_cmd *c, t_snd *s);
+int	send_bye(t_cmd *c, t_snd *s);
+int	send_disc(t_cmd *c, t_snd *s);
+int	send_get(t_cmd *c, t_snd *s);
+int	send_put(t_cmd *c, t_snd *s);
 
 #endif /* !__MY_FTP_H__ */

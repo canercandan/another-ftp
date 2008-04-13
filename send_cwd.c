@@ -5,15 +5,22 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 18:17:59 2008 caner candan
-** Last update Sun Apr 13 18:36:36 2008 caner candan
+** Last update Sun Apr 13 19:36:28 2008 caner candan
 */
 
+#include <stdio.h>
+#include <string.h>
 #include "my_ftp.h"
 
-int	send_cwd(t_ftp *f, t_snd *s, char **snd)
+int	send_cwd(t_cmd *c, t_snd *s)
 {
-  f = NULL;
-  s = NULL;
-  snd = NULL;
+  char	buf[200];
+
+  if (DEBUG)
+    printf("send_cwd()\n");
+  sprintf(buf, SD_FMT, s->req, c->param);
+  if (DEBUG)
+    printf(buf);
+  xsend(c->f->s, buf, (void *) strlen(buf), 0);
   return (0);
 }

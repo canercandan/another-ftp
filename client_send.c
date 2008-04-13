@@ -5,10 +5,11 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 17:49:34 2008 caner candan
-** Last update Sun Apr 13 17:51:19 2008 caner candan
+** Last update Sun Apr 13 19:23:03 2008 caner candan
 */
 
 #include <unistd.h>
+#include <strings.h>
 #include "my_ftp.h"
 
 void	client_send(t_ftp *f)
@@ -17,9 +18,11 @@ void	client_send(t_ftp *f)
   int	nbr;
 
   prompt();
+  bzero(buf, sizeof(buf));
   while ((nbr = read(0, buf, sizeof(buf))))
     {
-      xsend(f->s, buf, (void *) nbr, 0);
+      send_init(f, buf);
+      bzero(buf, sizeof(buf));
       prompt();
     }
 }

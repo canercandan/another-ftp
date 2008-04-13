@@ -5,13 +5,13 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Mon Apr 14 00:08:31 2008 caner candan
+** Last update Mon Apr 14 00:12:03 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
 # define __MY_FTP_H__
 
-# define DEBUG		1
+# define DEBUG		0
 
 # define MESG_WELCOME	"[[[ Welcome to My_FTP {EPITECH.} ]]]"
 # define MESG_SLOTS	"You are user number %d of %d allowed."

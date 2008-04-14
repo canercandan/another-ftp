@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 11:02:12 2008 caner candan
-** Last update Sun Apr 13 20:29:12 2008 caner candan
+** Last update Mon Apr 14 06:05:01 2008 caner candan
 */
 
 #include <stdio.h>
@@ -24,13 +24,16 @@ int		req_rn(t_cmd *c, t_req *r)
     return (FALSE);
   if (!from)
     {
-      printf("req_rn() RNFR\n");
+      if (DEBUG)
+	printf("req_rn() RNFR\n");
       from = strdup(c->param);
       return (0);
     }
-  printf("req_rn() RNTO %s -> %s\n", from, c->param);
+  if (DEBUG)
+    printf("req_rn() RNTO %s -> %s\n", from, c->param);
   rename(from, c->param);
   free(from);
   from = 0;
+  mesg_dump(c->f->cs, NULL, "2501");
   return (0);
 }

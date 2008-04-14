@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 17:56:02 2008 caner candan
-** Last update Sun Apr 13 22:15:39 2008 caner candan
+** Last update Mon Apr 14 03:59:39 2008 caner candan
 */
 
 #include <string.h>
@@ -29,7 +29,7 @@ t_snd	gl_snd[] = {
   {SD_BINARY, send_binary, 0},
   {SD_QUIT, send_quit, RQ_QUIT},
   {SD_BYE, send_quit, RQ_QUIT},
-  {SD_DISC, send_disc, 0},
+  {SD_DISC, send_disc, RQ_QUIT},
   {SD_GET, send_get, RQ_GET},
   {SD_PUT, send_put, RQ_PUT},
   {0, 0, 0}

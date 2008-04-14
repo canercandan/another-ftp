@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 17:47:18 2008 caner candan
-** Last update Sun Apr 13 23:02:16 2008 caner candan
+** Last update Mon Apr 14 05:46:51 2008 caner candan
 */
 
 #include <unistd.h>
@@ -25,7 +25,10 @@ void	client_listen(t_ftp *f)
     {
       bzero(buf, sizeof(buf));
       if ((nbr = (int) xrecv(f->s, buf, (void *) sizeof(buf), 0)) > 0)
-	write(1, buf, nbr);
+	{
+	  if (is_get(f, buf) == FALSE)
+	    write(1, buf, nbr);
+	}
       else
 	break;
       prompt();

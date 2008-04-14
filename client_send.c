@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 17:49:34 2008 caner candan
-** Last update Sun Apr 13 23:07:31 2008 caner candan
+** Last update Mon Apr 14 05:48:00 2008 caner candan
 */
 
 #include <unistd.h>
@@ -22,6 +22,7 @@ void	client_send(t_ftp *f)
 
   if (DEBUG)
     printf("client_send()\n");
+  login_client(f);
   while (42)
     {
       bzero(buf, sizeof(buf));

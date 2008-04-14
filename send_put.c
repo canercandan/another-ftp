@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 18:17:59 2008 caner candan
-** Last update Sun Apr 13 23:58:43 2008 caner candan
+** Last update Mon Apr 14 02:33:29 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -39,7 +39,7 @@ int		send_put(t_cmd *c, t_snd *s)
   while ((nbr = read(fd, buf, sizeof(buf))) > 0)
     strncat(content, buf, nbr);
   xsend(c->f->s, content, (void *) (int) sb.st_size, 0);
-  free(content);
+  /*free(content);*/
   close(fd);
   return (TRUE);
 }

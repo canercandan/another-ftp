@@ -5,14 +5,23 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 18:17:59 2008 caner candan
-** Last update Sun Apr 13 19:12:54 2008 caner candan
+** Last update Mon Apr 14 06:09:53 2008 caner candan
 */
 
+#include <string.h>
+#include <stdio.h>
 #include "my_ftp.h"
 
 int	send_rn(t_cmd *c, t_snd *s)
 {
-  c = NULL;
+  char	buf[200];
+
   s = NULL;
+  if (DEBUG)
+    printf("send_rn()\n");
+  sprintf(buf, SD_FMT, RQ_RNFR, c->param, "");
+  xsend(c->f->s, buf, (void *) strlen(buf), 0);
+  sprintf(buf, SD_FMT, RQ_RNTO, c->param2, "");
+  xsend(c->f->s, buf, (void *) strlen(buf), 0);
   return (0);
 }

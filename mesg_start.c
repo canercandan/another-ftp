@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Wed Apr  9 18:39:47 2008 caner candan
-** Last update Sun Apr 13 20:34:21 2008 caner candan
+** Last update Mon Apr 14 03:36:56 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -22,10 +22,10 @@ void	mesg_start(t_ftp *f)
     printf("mesg_start()\n");
   sprintf(mesg, MESG_WELCOME);
   mesg_dump(f->cs, mesg, "2201");
-  sprintf(mesg, MESG_SLOTS, 0, 0);
-  mesg_dump(f->cs, mesg, "2200");
-  sprintf(mesg, MESG_TIME, "00h00", f->port);
-  mesg_dump(f->cs, mesg, "2200");
-  sprintf(mesg, MESG_TIMEOUT, 0);
-  mesg_dump(f->cs, mesg, "2201");
+  //sprintf(mesg, MESG_SLOTS, 0, 0);
+  //mesg_dump(f->cs, mesg, "2200");
+  //sprintf(mesg, MESG_TIME, "00h00", f->port);
+  //mesg_dump(f->cs, mesg, "2200");
+  //sprintf(mesg, MESG_TIMEOUT, 0);
+  //mesg_dump(f->cs, mesg, "2201");
 }

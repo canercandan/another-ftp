@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 18:17:59 2008 caner candan
-** Last update Sun Apr 13 22:29:03 2008 caner candan
+** Last update Mon Apr 14 03:28:15 2008 caner candan
 */
 
 #include <stdio.h>
@@ -19,7 +19,6 @@ int	send_list(t_cmd *c, t_snd *s)
   if (DEBUG)
     printf("send_list()\n");
   sprintf(buf, SD_FMT, s->req, (c->param ? c->param : ""), "");
-  printf(buf);
   xsend(c->f->s, buf, (void *) strlen(buf), 0);
   return (0);
 }

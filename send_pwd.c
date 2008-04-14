@@ -5,11 +5,11 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Sun Apr 13 18:17:59 2008 caner candan
-** Last update Sun Apr 13 22:29:32 2008 caner candan
+** Last update Mon Apr 14 04:09:27 2008 caner candan
 */
 
-#include <stdio.h>
 #include <string.h>
+#include <stdio.h>
 #include "my_ftp.h"
 
 int	send_pwd(t_cmd *c, t_snd *s)

@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 10:01:00 2008 caner candan
-** Last update Mon Apr 14 00:12:03 2008 caner candan
+** Last update Mon Apr 14 05:49:57 2008 caner candan
 */
 
 #ifndef __MY_FTP_H__
@@ -19,16 +19,19 @@
 # define MESG_TIMEOUT	"You will be disconnected after %d minutes of inactivity."
 # define MESG_USER_OK	"User %s OK. Password required"
 # define MESG_USER_GRP	"User %s has group access to:  %s	%s"
-# define MESG_USER_DIR	"OK. Current restricted directory is /"
+# define MESG_USER_DIR	"OK. Current restricted directory is %s"
 # define MESG_SYS_TYPE	"Remote system type is %s"
 # define MESG_MODE	"Using %s mode to transfer files."
-
-# define ERR_INVALID	"?Invalid command.\n"
 
 # define MESG_CODE	"%c%c%c%c%s\r\n"
 
 # define MESG_SEND	' '
 # define MESG_NOTSEND	'-'
+
+# define ERR_INVALID	"?Invalid command.\n"
+# define ERR_CONNECT	"Not connected.\n"
+
+# define USER_FILE	"users.txt"
 
 # define TYPE_UNIX	"UNIX"
 
@@ -38,6 +41,9 @@
 
 # define PROMPT_CMD	"<-- %s\n"
 # define PROMPT_RES	"--> "
+
+# define PROMPT_USER	"Username> "
+# define PROMPT_PASS	"Password> "
 
 # define PROMPT		"ftp> "
 
@@ -53,6 +59,7 @@
 # define WAIT		1
 # define RET_QUIT	2
 # define EMPTY		3
+# define DENIED		4
 
 # define RQ_LIST	"LIST"
 # define RQ_GET		"GET"
@@ -120,9 +127,12 @@ typedef struct	s_ftp
 {
   char		*host;
   char		*port;
-  char		root[PATH_SIZE];
+  char		*root;
   int		s;
   int		cs;
+  int		cnt;
+  char		*user;
+  char		*pass;
 }		t_ftp;
 
 typedef struct	s_cmd
@@ -139,6 +149,7 @@ typedef struct	s_req
   int		(*f)();
   char		*cmd;
   char		*opt;
+  int		cnt;
 }		t_req;
 
 typedef struct	s_snd
@@ -236,5 +247,10 @@ int	send_disc(t_cmd *c, t_snd *s);
 int	send_get(t_cmd *c, t_snd *s);
 int	send_put(t_cmd *c, t_snd *s);
 int	send_noop(t_ftp *f);
+
+int	is_get(t_ftp *f, char *buf);
+
+int	login_server(t_cmd *c);
+int	login_client(t_ftp *f);
 
 #endif /* !__MY_FTP_H__ */

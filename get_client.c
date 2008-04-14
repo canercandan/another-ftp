@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 17:36:14 2008 caner candan
-** Last update Sun Apr 13 20:34:49 2008 caner candan
+** Last update Mon Apr 14 04:58:46 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -28,6 +28,7 @@ void	get_client(t_ftp *f)
     printf("get_client()\n");
   if (!(pid = fork()))
     {
+      f->cnt = FALSE;
       bzero(buf, sizeof(buf));
       mesg_start(f);
       while ((nbr = (int) xrecv(f->cs, buf, (void *) sizeof(buf), 0)) > 0)

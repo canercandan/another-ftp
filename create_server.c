@@ -5,7 +5,7 @@
 ** Login   <candan_c@epitech.net>
 ** 
 ** Started on  Thu Apr  3 11:51:29 2008 caner candan
-** Last update Fri Apr 11 16:53:02 2008 caner candan
+** Last update Mon Apr 14 05:07:12 2008 caner candan
 */
 
 #include <sys/types.h>
@@ -29,6 +29,6 @@ int			create_server(t_ftp *f)
   if (xbind(f->s, (struct sockaddr *) &addr, (void *) sizeof(addr)) < 0)
     return (FALSE);
   xlisten(f->s, NB_CLI);
-  getcwd(f->root, sizeof(f->root));
+  //getcwd(f->root, sizeof(f->root));
   return (TRUE);
 }

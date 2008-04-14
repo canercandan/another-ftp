@@ -1,0 +1,4 @@
+username	password	path
+--------	---------	---------
+root		toor		/
+usr		rsu		/usr/
